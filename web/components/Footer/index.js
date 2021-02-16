@@ -1,8 +1,6 @@
 import styles from './index.module.css';
 
-function Footer({}) {
-  console.log('footer');
-
+function Footer() {
   return (
     <footer className={styles.footer}>
       <div>

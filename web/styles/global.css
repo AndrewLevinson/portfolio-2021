@@ -1,50 +1,35 @@
 /* globals */
-
 a {
   text-decoration-color: transparent;
-  color: coral;
+  color: #2e63b8;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
     'Helvetica Neue', sans-serif;
-  font-size: 1.6rem;
 }
 
 a:hover,
 a:focus,
 a:focus-visible {
-  text-decoration-color: coral;
+  text-decoration-color: #2e63b8;
 }
 
 .backLink {
   display: block;
   margin-bottom: 0.5rem;
+  position: absolute;
+  top: -30px;
+  font-size: 1.6rem;
 }
 
-/* homepage */
-.main {
+/* _app.js layout style */
+.container {
   position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: #fff;
 }
-.container {
-  max-width: 600px;
-  margin: 150px auto 50px auto;
-  flex-grow: 1;
-}
-.blog-list {
-  margin: 0;
-}
-.blog-list li {
-  margin-bottom: 2rem;
-}
-.blog-list a {
-  font-size: 1.9rem;
-}
-
-.description {
-  color: #262626;
-  opacity: 0.75;
-  display: block;
-  font-size: 1.6rem;
-  line-height: 1.3;
+.spacer {
+  height: 10px;
+  background-color: #f7f6f8;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
 }

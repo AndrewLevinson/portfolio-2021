@@ -1,6 +1,6 @@
 export default {
-  name: 'post',
-  title: 'Post',
+  name: 'project',
+  title: 'Project',
   type: 'document',
   fields: [
     {
@@ -18,10 +18,10 @@ export default {
       },
     },
     {
-      name: 'author',
-      title: 'Author',
+      name: 'relatedPost',
+      title: 'Related Post',
       type: 'reference',
-      to: { type: 'author' },
+      to: { type: 'post' },
     },
     {
       name: 'mainImage',
@@ -52,23 +52,18 @@ export default {
       title: 'Published at',
       type: 'date',
     },
-    {
-      name: 'body',
-      title: 'Body',
-      type: 'blockContent',
-    },
   ],
 
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
+      post: 'post.title',
       media: 'mainImage',
     },
     prepare(selection) {
-      const { author } = selection;
+      const { post } = selection;
       return Object.assign({}, selection, {
-        subtitle: author && `by ${author}`,
+        subtitle: post && `related: ${post}`,
       });
     },
   },
