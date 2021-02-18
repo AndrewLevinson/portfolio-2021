@@ -32,6 +32,12 @@ export default {
       },
     },
     {
+      name: 'imageSet',
+      title: 'Image Set',
+      type: 'array',
+      of: [{ type: 'image' }],
+    },
+    {
       name: 'description',
       title: 'Description',
       type: 'string',

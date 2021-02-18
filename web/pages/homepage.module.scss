@@ -84,3 +84,24 @@
     font-size: 1.4rem;
   }
 }
+
+.imageSet {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  img {
+    width: 100px;
+    height: 50px;
+    object-fit: cover;
+    max-width: 100%;
+    object-position: top left;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    transition: 0.3s ease-in-out all;
+
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
+}

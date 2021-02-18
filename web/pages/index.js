@@ -3,9 +3,13 @@ import Head from 'next/head';
 import Link from 'next/link';
 import groq from 'groq';
 import client from '../client';
+import imageUrlBuilder from '@sanity/image-url';
 
 import styles from './homepage.module.scss';
 
+function urlFor(source) {
+  return imageUrlBuilder(client).image(source);
+}
 const Index = props => {
   const { posts = [], projects = [] } = props;
 
@@ -16,7 +20,7 @@ const Index = props => {
         {/* <link rel='icon' href='/favicon.ico' /> */}
       </Head>
       <h1>Andrew Levinson</h1>
-      <h3 className={styles.subhed}>Designer / Developer / Data Visualizer</h3>
+      <h4 className={styles.subhed}>Designer / Developer / Data Visualizer</h4>
       <p className={styles.intro}>
         Currently, I design & code visuals at The Wall Street Journal and teach Core Lab Interaction at Parsons School
         of Design. Previously, I’ve been a product designer at a software agency, a financial consultant, and even a
@@ -37,9 +41,11 @@ const Index = props => {
                 description = '',
                 relatedPost = '',
                 directLink = '',
+                imageSet = '',
               },
               i
             ) => {
+              console.log(imageSet);
               return (
                 slug && (
                   <li key={_id}>
@@ -49,10 +55,17 @@ const Index = props => {
                     <span>
                       <Link href={directLink}>
                         <a>
-                          {title} <span className={styles.tag}>{`• ${category}`}</span>
+                          {title} <span className={styles.tag}>{category && `• ${category}`}</span>
                           <span className={styles.description}>{description}</span>
                         </a>
                       </Link>
+                      {imageSet && (
+                        <div className={styles.imageSet}>
+                          {imageSet.map(image => (
+                            <img src={urlFor(image).width(500).url()} />
+                          ))}
+                        </div>
+                      )}
                       {relatedPost && (
                         <>
                           <br /> <span className={styles.markers}>└──</span>
@@ -117,7 +130,8 @@ export async function getStaticProps() {
         directLink,
         "category": categories[0]->title,
         "relatedPost": relatedPost->slug,
-      }
+        "imageSet": imageSet[]
+      }|order(category asc)
     `),
     },
   };
