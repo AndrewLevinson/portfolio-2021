@@ -1,4 +1,3 @@
-// index.js
 import Head from 'next/head';
 import Link from 'next/link';
 import groq from 'groq';
@@ -45,7 +44,6 @@ const Index = props => {
               },
               i
             ) => {
-              console.log(imageSet);
               return (
                 slug && (
                   <li key={_id}>
@@ -53,17 +51,15 @@ const Index = props => {
                       {i === 0 ? '┌──' : i === projects.length - 1 ? '└──' : '├──'}
                     </span>
                     <span>
-                      <Link href={directLink}>
-                        <a>
-                          {title} <span className={styles.tag}>{category && `• ${category}`}</span>
-                          <span className={styles.description}>{description}</span>
-                        </a>
-                      </Link>
+                      <a href={directLink}>
+                        {title} <span className={styles.tag}>{category && `• ${category}`}</span>
+                        <span className={styles.description}>{description}</span>
+                      </a>
                       {imageSet && (
                         <div className={styles.imageSet}>
-                          {imageSet.map(image => (
-                            <img src={urlFor(image).width(500).url()} />
-                          ))}
+                          {imageSet.map(image => {
+                            return <img key={image._key} src={urlFor(image).width(500).url()} />;
+                          })}
                         </div>
                       )}
                       {relatedPost && (
@@ -87,7 +83,7 @@ const Index = props => {
         <span className={styles.category}>content & thoughts/</span>
         <ul className={styles.blogList}>
           {posts.map(
-            ({ _id, title = '', slug = '', publishedAt = '', description = '', directLink = '' }, i) =>
+            ({ _id, title = '', slug = '', publishedAt = '', description = '' }, i) =>
               slug && (
                 <li key={_id}>
                   <span className={styles.markers}>{i === 0 ? '┌──' : i === posts.length - 1 ? '└──' : '├──'}</span>
@@ -98,18 +94,28 @@ const Index = props => {
                         <span className={styles.description}>{description}</span>
                       </a>
                     </Link>
-                    {/* {directLink && (
-                      <>
-                        <br /> &nbsp; &nbsp; └──
-                        <Link href={directLink}>
-                          <a style={{ fontSize: 16 }}>Direct link ⟶</a>
-                        </Link>
-                      </>
-                    )} */}
                   </span>
                 </li>
               )
           )}
+        </ul>
+      </div>
+
+      <div className={styles.tree}>
+        <span className={styles.category}>recognition/</span>
+        <ul className={styles.blogList}>
+          <li>
+            <a href='https://www.storybench.org/how-the-wall-street-journal-visualized-the-2020-election-results/'>
+              How the Wall Street Journal visualized the 2020 election results
+              <span className={styles.description}>Storybench interview on design and development process</span>
+            </a>
+          </li>
+          <li>
+            <a href='https://www.informationisbeautifulawards.com/showcase/4279-the-united-states-water-crisis'>
+              Kantar Information is Beautiful Awards 2019 Shortlist
+              <span className={styles.description}>Shortlisted for my United States Water Crisis visual essay</span>
+            </a>
+          </li>
         </ul>
       </div>
     </main>
@@ -124,6 +130,7 @@ export async function getStaticProps() {
     `),
       projects: await client.fetch(groq`
       *[_type == "project"]{
+        _id,
         title,
         slug,
         description, 

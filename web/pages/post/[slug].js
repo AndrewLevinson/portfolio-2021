@@ -3,18 +3,13 @@ import { format } from 'date-fns';
 import Head from 'next/head';
 import Link from 'next/link';
 import groq from 'groq';
-import imageUrlBuilder from '@sanity/image-url';
 import BlockContent from '@sanity/block-content-to-react';
 import client from '../../client';
 
 import RelatedPosts from '../../components/RelatedPosts/RelatedPosts';
 
-function urlFor(source) {
-  return imageUrlBuilder(client).image(source);
-}
-
 const Post = props => {
-  const { title, name, categories, authorImage, description, publishedAt, body = [], otherPosts } = props;
+  const { title, categories, description, publishedAt, body = [], otherPosts } = props;
 
   return (
     <article className={styles.article}>
@@ -22,25 +17,13 @@ const Post = props => {
         <title>{title} by Andrew Levinson</title>
       </Head>
       <Link href='/' as={`/`} passHref>
-        <a className='backLink'>⟵ Back home</a>
+        <a className='backLink'>⟵ back home/</a>
       </Link>
 
       <h1>{title}</h1>
       <h4 className={styles.description}>{description}</h4>
-      {/* {categories && (
-        <ul className={styles.tags}>
-          {categories.map(category => (
-            <li key={category}>{category}</li>
-          ))}
-        </ul>
-      )} */}
-      <div className={styles.author}>
-        {authorImage && <img src={urlFor(authorImage).width(100).url()} />}
-        <div>
-          <span>{name}</span>
-          <span>{format(new Date(publishedAt), 'MMM dd, yyyy')}</span>
-        </div>
-      </div>
+      <p className={styles.timestamp}>Published {format(new Date(publishedAt), 'MMM dd, yyyy')}</p>
+      <ul className={styles.tags}>{categories && categories.map(category => <li key={category}>{category}</li>)}</ul>
 
       <BlockContent
         blocks={body}
@@ -55,9 +38,7 @@ const Post = props => {
 
 const query = groq`*[_type == "post" && slug.current == $slug][0]{
   title,
-  "name": author->name,
   "categories": categories[]->title,
-  "authorImage": author->image,
   description,
   publishedAt,
   body
@@ -82,7 +63,10 @@ export async function getStaticProps({ params }) {
       }
     `);
 
-  const otherPosts = posts.filter(post => post.slug != slug);
+  const otherPosts = posts
+    .filter(post => post.slug != slug)
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 3);
 
   return { props: { ...(await client.fetch(query, { slug })), otherPosts } };
 }

@@ -8,16 +8,18 @@ function RelatedPosts({ posts }) {
       {posts &&
         posts.map((post, i) => {
           return (
-            <div key={i} className={styles.post}>
-              <Link href='/post/[slug]' as={`/post/${post.slug}`} passHref>
-                <a>{post.title}</a>
-              </Link>
-              <h5>{post.description}</h5>
-            </div>
+            <ul key={i} className={styles.post}>
+              <li>
+                <Link href='/post/[slug]' as={`/post/${post.slug}`} passHref>
+                  <a>{post.title}</a>
+                </Link>
+                <h5>{post.description}</h5>
+              </li>
+            </ul>
           );
         })}
       <Link href='/' as={`/`} passHref>
-        <a>⟵ Back home</a>
+        <a>⟵ back home/</a>
       </Link>
     </div>
   );
