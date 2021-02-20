@@ -7,12 +7,14 @@ import imageUrlBuilder from '@sanity/image-url';
 import BlockContent from '@sanity/block-content-to-react';
 import client from '../../client';
 
+import RelatedPosts from '../../components/RelatedPosts/RelatedPosts';
+
 function urlFor(source) {
   return imageUrlBuilder(client).image(source);
 }
 
 const Post = props => {
-  const { title, name, categories, authorImage, description, publishedAt, body = [] } = props;
+  const { title, name, categories, authorImage, description, publishedAt, body = [], otherPosts } = props;
 
   return (
     <article className={styles.article}>
@@ -46,6 +48,7 @@ const Post = props => {
         {...client.config()}
         className={styles.content}
       />
+      <RelatedPosts posts={otherPosts} />
     </article>
   );
 };
@@ -72,7 +75,16 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { slug = '' } = params;
-  return { props: await client.fetch(query, { slug }) };
+
+  const posts = await client.fetch(groq`
+      *[_type == "post"]{
+        title, description, "slug": slug.current
+      }
+    `);
+
+  const otherPosts = posts.filter(post => post.slug != slug);
+
+  return { props: { ...(await client.fetch(query, { slug })), otherPosts } };
 }
 
 export default Post;

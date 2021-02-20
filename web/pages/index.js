@@ -68,7 +68,7 @@ const Index = props => {
                       )}
                       {relatedPost && (
                         <>
-                          <br /> <span className={styles.markers}>└──</span>
+                          <span className={styles.markers}>└──</span>
                           <Link href='/post/[slug]' as={`/post/${relatedPost.current}`} passHref>
                             <a style={{ fontSize: 16 }}>Related blog post ⟶</a>
                           </Link>
