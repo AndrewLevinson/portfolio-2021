@@ -1,6 +1,7 @@
 :root {
   /* --link-color: #398b99; */
   /* --link-color: #2e63b8; */
+  --border-radius: 2px;
 }
 
 .light {
@@ -13,6 +14,7 @@
 
   --tree-marker-color: hsla(0, 0%, 0%, 0.4);
   --grey-mid: #666;
+  --grey-light: hsl(189, 2%, 95%);
 }
 
 .dark {

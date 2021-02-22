@@ -23,7 +23,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: var(--text-color);
   background-color: var(--spacer-background);
-  transition: 0.2s ease-in color, 0.3s ease-in background-color;
+  transition: 0.2s ease-in color;
 }
 
 /* Typography

@@ -35,11 +35,11 @@
     padding-top: 1rem;
   }
 
-  .category {
+  .sectionTitle {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
       'Helvetica Neue', sans-serif;
     color: var(--text-color);
-    opacity: 0.5;
+    opacity: 0.75;
     display: inline-block;
     margin-bottom: 1rem;
     font-size: 1.6rem;
@@ -66,7 +66,7 @@
 
   .description {
     color: var(--text-color);
-    opacity: 0.75;
+    // opacity: 0.75;
     display: inline-block;
     font-size: 1.6rem;
     line-height: 1.3;
@@ -79,7 +79,11 @@
     font-weight: 500;
     opacity: 0.6;
     vertical-align: baseline;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+    white-space: nowrap;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 0.5rem;
   }
 }
 
@@ -96,10 +100,26 @@
     object-position: top left;
     margin-right: 1rem;
     margin-bottom: 1rem;
+    border: 1px solid hsla(0, 0%, 90%, 0.5);
     transition: 0.3s ease-in-out all;
 
     &:hover {
       transform: scale(1.5);
     }
+  }
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  display: block;
+  margin: 2rem auto 0 auto;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--grey-light);
+  }
+  &:focus {
+    outline-color: var(--link-color);
   }
 }

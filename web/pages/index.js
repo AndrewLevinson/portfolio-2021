@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import groq from 'groq';
@@ -11,6 +12,7 @@ function urlFor(source) {
 }
 const Index = props => {
   const { posts = [], projects = [] } = props;
+  const [showAll, setShowAll] = useState(false);
 
   return (
     <main className={styles.main}>
@@ -27,60 +29,74 @@ const Index = props => {
       </p>
 
       <div className={styles.tree}>
-        <span className={styles.category}>recent work/</span>
+        <span className={styles.sectionTitle}>recent work/</span>
         <ul className={styles.blogList}>
-          {projects.map(
-            (
-              {
-                _id,
-                title = '',
-                slug = '',
-                publishedAt = '',
-                category = '',
-                description = '',
-                relatedPost = '',
-                directLink = '',
-                imageSet = '',
-              },
-              i
-            ) => {
-              return (
-                slug && (
-                  <li key={_id}>
-                    <span className={styles.markers}>
-                      {i === 0 ? '┌──' : i === projects.length - 1 ? '└──' : '├──'}
-                    </span>
-                    <span>
-                      <a href={directLink}>
-                        {title} <span className={styles.tag}>{category && `• ${category}`}</span>
-                        <span className={styles.description}>{description}</span>
-                      </a>
-                      {imageSet && (
-                        <div className={styles.imageSet}>
-                          {imageSet.map(image => {
-                            return <img key={image._key} src={urlFor(image).width(500).url()} />;
-                          })}
-                        </div>
-                      )}
-                      {relatedPost && (
-                        <>
-                          <span className={styles.markers}>└──</span>
-                          <Link href='/post/[slug]' as={`/post/${relatedPost.current}`} passHref>
-                            <a style={{ fontSize: 16 }}>Related blog post ⟶</a>
-                          </Link>
-                        </>
-                      )}
-                    </span>
-                  </li>
-                )
-              );
-            }
-          )}
+          {projects
+            .slice(0, showAll ? 100 : 3)
+            .map(
+              (
+                {
+                  _id,
+                  title = '',
+                  slug = '',
+                  publishedAt = '',
+                  category = '',
+                  description = '',
+                  relatedPost = '',
+                  directLink = '',
+                  imageSet = '',
+                },
+                i
+              ) => {
+                return (
+                  slug && (
+                    <li key={_id}>
+                      <span className={styles.markers}>
+                        {i === 0 ? '┌──' : i === projects.length - 1 ? '└──' : '├──'}
+                      </span>
+                      <span>
+                        <a href={directLink}>
+                          {title}
+                          <span className={styles.tag}>
+                            {' '}
+                            {category && `• ${category === 'The Wall Street Journal' ? 'WSJ' : category}`}
+                          </span>
+                          <span className={styles.description}>{description}</span>
+                        </a>
+                        {imageSet && (
+                          <div className={styles.imageSet}>
+                            {imageSet.map(image => (
+                              <img key={image._key} src={urlFor(image).width(500).url()} />
+                            ))}
+                          </div>
+                        )}
+                        {relatedPost && (
+                          <>
+                            <span className={styles.markers}>└──</span>
+                            <Link href='/post/[slug]' as={`/post/${relatedPost.current}`} passHref>
+                              <a style={{ fontSize: 16 }}>Related blog post ⟶</a>
+                            </Link>
+                          </>
+                        )}
+                      </span>
+                    </li>
+                  )
+                );
+              }
+            )}
         </ul>
+        {!showAll && (
+          <button className={styles.button} onClick={() => setShowAll(true)}>
+            Show more work +
+          </button>
+        )}
+        {/* <button className={styles.button} onClick={() => (showAll ? setShowAll(false) : setShowAll(true))}>
+          Show {showAll ? 'less work –' : 'more work +'}
+        </button> */}
       </div>
 
       <div className={styles.tree}>
-        <span className={styles.category}>content & thoughts/</span>
+        <span className={styles.sectionTitle}>content & thoughts/</span>
         <ul className={styles.blogList}>
           {posts.map(
             ({ _id, title = '', slug = '', publishedAt = '', description = '' }, i) =>
@@ -102,7 +118,7 @@ const Index = props => {
       </div>
 
       <div className={styles.tree}>
-        <span className={styles.category}>recognition/</span>
+        <span className={styles.sectionTitle}>recognition/</span>
         <ul className={styles.blogList}>
           <li>
             <a href='https://www.storybench.org/how-the-wall-street-journal-visualized-the-2020-election-results/'>
@@ -138,7 +154,7 @@ export async function getStaticProps() {
         "category": categories[0]->title,
         "relatedPost": relatedPost->slug,
         "imageSet": imageSet[]
-      }|order(category asc)
+      }|order(publishedAt desc)
     `),
     },
   };
