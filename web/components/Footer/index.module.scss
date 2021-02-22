@@ -26,9 +26,11 @@
   transform: translateX(-50%);
   border: 2px solid transparent;
   transition: 0.3s ease-in-out border-color;
+  transition: 0.3s ease-in-out transform;
 
   &:hover {
     cursor: pointer;
+    transform: translateX(-50%) rotate(5deg);
     border-color: var(--text-color);
   }
 
