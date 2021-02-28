@@ -11,9 +11,12 @@ function ThemeChanger() {
   if (!isMounted) return null;
 
   return (
-    <button className={styles.button} onClick={() => (theme === 'dark' ? setTheme('light') : setTheme('dark'))}>
-      {theme === 'dark' ? '🌆' : '🏙'}
-    </button>
+    <div className={styles.holder}>
+      <button className={styles.button} onClick={() => (theme === 'dark' ? setTheme('light') : setTheme('dark'))}>
+        <span className={styles.icon}>{theme === 'dark' ? '🌆' : '🏙'}</span>
+        <span className={[isMounted && styles.mounted, styles.label].join(' ')}>{theme} mode</span>
+      </button>
+    </div>
   );
 }
 

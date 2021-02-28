@@ -10,7 +10,7 @@
   --link-color: #398b99;
   --header-text-color: #343434;
   --tag-color: #262626;
-  --spacer-background: #f7f6f8;
+  --spacer-background: #effbf9;
 
   --tree-marker-color: hsla(0, 0%, 0%, 0.4);
   --grey-mid: #666;
@@ -18,12 +18,13 @@
 }
 
 .dark {
-  --background-color: #081214;
+  /* --background-color: #081214; */
+  --background-color: #240b05;
   --text-color: #f3f0f0;
-  --link-color: #42a2b3;
+  --link-color: #e9c46a;
   --header-text-color: #fefefe;
   --tag-color: #fefefe;
-  --spacer-background: #000;
+  --spacer-background: hsl(43, 74%, 8%);
 
   --tree-marker-color: hsla(0, 0%, 100%, 0.4);
   --grey-mid: #999;

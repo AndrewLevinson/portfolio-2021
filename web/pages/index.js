@@ -4,7 +4,10 @@ import Link from 'next/link';
 import groq from 'groq';
 import client from '../client';
 import imageUrlBuilder from '@sanity/image-url';
+import { format } from 'date-fns';
 
+import NowPlaying from '../components/NowPlaying';
+import TopTracks from '../components/TopTracks';
 import styles from './homepage.module.scss';
 
 function urlFor(source) {
@@ -51,22 +54,22 @@ const Index = props => {
                 return (
                   slug && (
                     <li key={_id}>
-                      <span className={styles.markers}>
+                      {/* <span className={styles.markers}>
                         {i === 0 ? '┌──' : i === projects.length - 1 ? '└──' : '├──'}
-                      </span>
+                      </span> */}
                       <span>
                         <a href={directLink}>
+                          <div>
+                            <span className={styles.tag}>{format(new Date(publishedAt), 'MMM. yyyy')} </span>
+                            <span className={styles.tag}>{category && `• ${category}`}</span>
+                          </div>
                           {title}
-                          <span className={styles.tag}>
-                            {' '}
-                            {category && `• ${category === 'The Wall Street Journal' ? 'WSJ' : category}`}
-                          </span>
                           <span className={styles.description}>{description}</span>
                         </a>
                         {imageSet && (
                           <div className={styles.imageSet}>
                             {imageSet.map(image => (
-                              <img key={image._key} src={urlFor(image).width(500).url()} />
+                              <img key={image._key} src={urlFor(image).width(400).url()} />
                             ))}
                           </div>
                         )}
@@ -85,14 +88,14 @@ const Index = props => {
               }
             )}
         </ul>
-        {!showAll && (
+        {/* {!showAll && (
           <button className={styles.button} onClick={() => setShowAll(true)}>
             Show more work +
           </button>
-        )}
-        {/* <button className={styles.button} onClick={() => (showAll ? setShowAll(false) : setShowAll(true))}>
-          Show {showAll ? 'less work –' : 'more work +'}
-        </button> */}
+        )} */}
+        <button className={styles.button} onClick={() => (showAll ? setShowAll(false) : setShowAll(true))}>
+          {showAll ? 'Collapse –' : 'Show more work +'}
+        </button>
       </div>
 
       <div className={styles.tree}>
@@ -102,7 +105,7 @@ const Index = props => {
             ({ _id, title = '', slug = '', publishedAt = '', description = '' }, i) =>
               slug && (
                 <li key={_id}>
-                  <span className={styles.markers}>{i === 0 ? '┌──' : i === posts.length - 1 ? '└──' : '├──'}</span>
+                  {/* <span className={styles.markers}>{i === 0 ? '┌──' : i === posts.length - 1 ? '└──' : '├──'}</span> */}
                   <span>
                     <Link href='/post/[slug]' as={`/post/${slug.current}`} passHref>
                       <a>
@@ -132,7 +135,18 @@ const Index = props => {
               <span className={styles.description}>Shortlisted for my United States Water Crisis visual essay</span>
             </a>
           </li>
+          <li>
+            <a href='https://scimaps.org/mapdetail/united_states_water__241'>
+              Places & Spaces: Mapping Science
+              <span className={styles.description}>Featured macroscape in the 2020 collection</span>
+            </a>
+          </li>
         </ul>
+      </div>
+
+      <div className={styles.tree}>
+        <span className={styles.sectionTitle}>currently/</span>
+        <NowPlaying />
       </div>
     </main>
   );
@@ -151,6 +165,7 @@ export async function getStaticProps() {
         slug,
         description, 
         directLink,
+        publishedAt,
         "category": categories[0]->title,
         "relatedPost": relatedPost->slug,
         "imageSet": imageSet[]
