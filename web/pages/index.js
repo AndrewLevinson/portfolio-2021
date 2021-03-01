@@ -7,13 +7,14 @@ import imageUrlBuilder from '@sanity/image-url';
 import { format } from 'date-fns';
 
 import NowPlaying from '../components/NowPlaying';
+import Book from '../components/Book';
 import styles from './homepage.module.scss';
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source);
 }
 const Index = props => {
-  const { posts = [], projects = [] } = props;
+  const { posts = [], projects = [], book = {} } = props;
   const [showAll, setShowAll] = useState(false);
 
   return (
@@ -141,6 +142,7 @@ const Index = props => {
       <div className={styles.tree}>
         <span className={styles.sectionTitle}>my vibe/</span>
         <NowPlaying />
+        <Book {...book} />
       </div>
     </main>
   );
@@ -165,6 +167,15 @@ export async function getStaticProps() {
         "imageSet": imageSet[]
       }|order(publishedAt desc)
     `),
+
+      book: await client.fetch(groq`
+      *[_type == "currentRead"][0]{
+        title, 
+        bookAuthor,
+        genre,
+        coverImage 
+      }
+      `),
     },
   };
 }

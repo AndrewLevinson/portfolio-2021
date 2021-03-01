@@ -25,12 +25,11 @@ function NowPlaying() {
   return (
     <div className={styles.playing}>
       <h5>
-        {data.playedAt ? (
-          <>Listened to {formatDistanceToNow(new Date(data.playedAt), { addSuffix: true })}</>
+        Currently listening
+        {data.isPlaying ? (
+          <span>...yes, literally right now</span>
         ) : (
-          <>
-            Now playing <span>(yes, literally right now)`</span>
-          </>
+          <span>...{formatDistanceToNow(new Date(data.playedAt), { addSuffix: true })}</span>
         )}
       </h5>
       <div className={styles.flex}>

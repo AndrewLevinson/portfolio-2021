@@ -5,12 +5,12 @@
 }
 
 .light {
-  --background-color: #fefefe;
+  --background-color: #fff;
   --text-color: #343434;
-  --link-color: #398b99;
+  --link-color: #4d8ea8;
   --header-text-color: #343434;
   --tag-color: #262626;
-  --spacer-background: #f7faf9;
+  --spacer-background: hsl(197, 37%, 94%);
 
   --tree-marker-color: hsla(0, 0%, 0%, 0.4);
   --grey-mid: #666;
@@ -29,7 +29,7 @@
   --spacer-background: hsl(43, 74%, 8%);
 
   --tree-marker-color: hsla(0, 0%, 100%, 0.4);
-  --grey-mid: #999;
+  --grey-mid: #beb8b7;
 
   --spotify-icon-color: #fffffe;
 }
