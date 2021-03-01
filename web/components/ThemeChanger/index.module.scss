@@ -1,5 +1,8 @@
 .holder {
   margin: 4rem 0 0 4rem;
+  @media (max-width: 550px) {
+    margin: 2.5rem 0 0 5vw;
+  }
 }
 
 .button {
@@ -23,10 +26,6 @@
     }
     cursor: pointer;
     outline: none;
-  }
-
-  @media (max-width: 550px) {
-    margin: 1rem 0 0 5vw;
   }
 }
 

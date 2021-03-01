@@ -10,11 +10,13 @@
   --link-color: #398b99;
   --header-text-color: #343434;
   --tag-color: #262626;
-  --spacer-background: #effbf9;
+  --spacer-background: #f7faf9;
 
   --tree-marker-color: hsla(0, 0%, 0%, 0.4);
   --grey-mid: #666;
   --grey-light: hsl(189, 2%, 95%);
+
+  --spotify-icon-color: #161513;
 }
 
 .dark {
@@ -28,4 +30,6 @@
 
   --tree-marker-color: hsla(0, 0%, 100%, 0.4);
   --grey-mid: #999;
+
+  --spotify-icon-color: #fffffe;
 }

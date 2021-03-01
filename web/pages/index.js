@@ -7,7 +7,6 @@ import imageUrlBuilder from '@sanity/image-url';
 import { format } from 'date-fns';
 
 import NowPlaying from '../components/NowPlaying';
-import TopTracks from '../components/TopTracks';
 import styles from './homepage.module.scss';
 
 function urlFor(source) {
@@ -88,11 +87,6 @@ const Index = props => {
               }
             )}
         </ul>
-        {/* {!showAll && (
-          <button className={styles.button} onClick={() => setShowAll(true)}>
-            Show more work +
-          </button>
-        )} */}
         <button className={styles.button} onClick={() => (showAll ? setShowAll(false) : setShowAll(true))}>
           {showAll ? 'Collapse –' : 'Show more work +'}
         </button>
@@ -145,7 +139,7 @@ const Index = props => {
       </div>
 
       <div className={styles.tree}>
-        <span className={styles.sectionTitle}>currently/</span>
+        <span className={styles.sectionTitle}>my vibe/</span>
         <NowPlaying />
       </div>
     </main>
