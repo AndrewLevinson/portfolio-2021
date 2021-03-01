@@ -4,11 +4,13 @@
 
   h5 {
     margin-bottom: 1rem;
-    font-weight: 400;
+    font-weight: 500;
+    font-variant: all-small-caps;
 
     span {
       font-style: italic;
       font-weight: 400;
+      font-variant: initial;
       color: var(--grey-mid);
     }
   }
@@ -34,9 +36,14 @@
   align-items: center;
   margin-bottom: 1rem;
 
-  img {
+  img,
+  .albumPlaceholder {
     width: 70px;
     margin-right: 1.5rem;
+  }
+  .albumPlaceholder {
+    background-color: #ddd;
+    height: 70px;
   }
 }
 
@@ -58,7 +65,7 @@
 }
 
 .genreList {
-  font-variant-caps: all-petite-caps;
+  font-variant-caps: all-small-caps;
   font-size: 1.4rem;
   color: var(--grey-mid);
   font-style: italic;

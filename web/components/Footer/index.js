@@ -16,13 +16,17 @@ function Footer() {
             </a>
           </li>
           <li>
-            <a href='https://twitter.com/andrew_levinson'>@andrew_levinson</a>
+            <a href='https://twitter.com/andrew_levinson' target='_blank' rel='noopener noreferrer'>
+              @andrew_levinson
+            </a>
           </li>
           {/* <li>
             <a href='https://github.com/AndrewLevinson'>Personal Github</a>
           </li> */}
           <li>
-            <a href='https://andrewlevinson.me/AndrewLevinson_Resume.pdf'>Resume</a>
+            <a href='https://andrewlevinson.me/AndrewLevinson_Resume.pdf' target='_blank' rel='noopener noreferrer'>
+              Resume
+            </a>
           </li>
         </ul>
         <p className={styles.note}>some shit about a copywrite trademark 2021 bs</p>

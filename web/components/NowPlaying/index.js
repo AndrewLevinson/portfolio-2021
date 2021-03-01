@@ -6,7 +6,21 @@ const fetcher = (...args) => fetch(...args).then(res => res.json());
 function NowPlaying() {
   const { data } = useSWR('/api/spotify-track', fetcher, { refreshInterval: 15000 });
 
-  if (!data) return null;
+  if (!data) {
+    return (
+      <div className={styles.playing}>
+        <h5>Loading Spotify...</h5>
+        <div className={styles.flex}>
+          <div className={styles.albumPlaceholder} />
+          <div className={styles.info}>
+            <span>Title</span>
+            <span>Artist</span>
+            <div className={styles.genreList}>Genres</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.playing}>
@@ -19,7 +33,6 @@ function NowPlaying() {
           </>
         )}
       </h5>
-
       <div className={styles.flex}>
         <img src={data.albumImageUrl} alt={`album image for ${data.album} by ${data.artist}`} width={75} />
         <div className={styles.info}>
