@@ -30,7 +30,7 @@
 
   &:hover {
     cursor: pointer;
-    transform: translateX(-50%) rotate(5deg);
+    transform: translateX(-50%) rotate(3deg);
     border-color: var(--text-color);
   }
 
@@ -54,6 +54,7 @@
     font-size: 2rem;
     line-height: 1.5;
     opacity: 0.85;
+    color: var(--text-color);
     @media (max-width: 549px) {
       font-size: 1.6rem;
       line-height: 1.3;

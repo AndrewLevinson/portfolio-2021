@@ -7,22 +7,21 @@
 .light {
   --background-color: #fff;
   --text-color: #343434;
-  --link-color: #4d8ea8;
+  --link-color: #40768c;
   --header-text-color: #343434;
   --tag-color: #262626;
-  --spacer-background: hsl(197, 37%, 94%);
+  --spacer-background: hsl(197, 37%, 97%);
 
   --tree-marker-color: hsla(0, 0%, 0%, 0.4);
   --grey-mid: #666;
-  --grey-light: hsl(189, 2%, 95%);
 
-  --spotify-icon-color: #161513;
+  --spotify-icon-color: #1ed760;
 }
 
 .dark {
   /* --background-color: #081214; */
   --background-color: #240b05;
-  --text-color: #f3f0f0;
+  --text-color: #e9e7e7;
   --link-color: #e9c46a;
   --header-text-color: #fefefe;
   --tag-color: #fefefe;

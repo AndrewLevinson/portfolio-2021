@@ -6,7 +6,7 @@ function Footer() {
     <footer className={styles.footer}>
       <div className={styles.me}>
         <Link href='/' as={`/`} passHref>
-          <img src='/images/default.png' width='150' className={styles.avatar} />
+          <img src='/images/default_avatar.jpg' width='85' className={styles.avatar} alt='avatar image of me, Andrew' />
         </Link>
         <p>Andrew Levinson is a graphics reporter for The Wall Street Journal</p>
         <ul>

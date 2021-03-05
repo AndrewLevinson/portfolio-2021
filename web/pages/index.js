@@ -26,12 +26,22 @@ const Index = props => {
       <h1>Andrew Levinson</h1>
       <h4 className={styles.subhed}>Designer / Developer / Data Visualizer</h4>
       <p className={styles.intro}>
-        Currently, I design & code visuals at The Wall Street Journal and teach Core Lab Interaction at Parsons School
-        of Design. Previously, I’ve been a product designer at a software agency, a financial consultant, and even a
-        touring musician in a metal band.
+        Currently, I design & code visuals at{' '}
+        <a href='https://graphics.wsj.com/' target='_blank' rel='noopener noreferrer'>
+          The Wall Street Journal
+        </a>{' '}
+        and occasionally teach{' '}
+        <a href='https://courses.newschool.edu/courses/PUCD2126/6770/' target='_blank' rel='noopener noreferrer'>
+          Core 2: Interaction Lab
+        </a>{' '}
+        at Parsons School of Design. Previously, I’ve been a product designer at a software agency, a financial
+        consultant, and even a touring musician in a metal band.
+        <span className={styles.jump}>
+          <a href='#recent'>recent work</a> | <a href='#blog'>thoughts</a> | <a href='#current'>vibe</a>
+        </span>
       </p>
 
-      <div className={styles.tree}>
+      <div className={styles.tree} id='recent'>
         <span className={styles.sectionTitle}>recent work/</span>
         <ul className={styles.blogList}>
           {projects
@@ -55,22 +65,33 @@ const Index = props => {
                   slug && (
                     <li key={_id}>
                       {/* <span className={styles.markers}>
-                        {i === 0 ? '┌──' : i === projects.length - 1 ? '└──' : '├──'}
+                        {i === 0 ? '┌──' : i === (showAll ? projects.length - 1 : 2) ? '└──' : '├──'}
                       </span> */}
                       <span>
                         <a href={directLink}>
                           <div>
-                            <span className={styles.tag}>{format(new Date(publishedAt), 'MMM. yyyy')} </span>
-                            <span className={styles.tag}>{category && `• ${category}`}</span>
+                            <span className={styles.tag}>
+                              {format(new Date(publishedAt), 'MMM. yyyy')}
+                              {category && ` • ${category}`}
+                              <br />
+                            </span>
                           </div>
                           {title}
                           <span className={styles.description}>{description}</span>
                         </a>
                         {imageSet && (
                           <div className={styles.imageSet}>
-                            {imageSet.map(image => (
-                              <img key={image._key} src={urlFor(image).width(400).url()} />
-                            ))}
+                            {imageSet.map((image, i) => {
+                              return (
+                                <img
+                                  key={image._key}
+                                  src={urlFor(image).width(400).auto('format').url()}
+                                  width='120'
+                                  height='60'
+                                  alt={`screenshot #${i + 1} of ${imageSet.length} for project titled: ${title}`}
+                                />
+                              );
+                            })}
                           </div>
                         )}
                         {relatedPost && (
@@ -93,7 +114,7 @@ const Index = props => {
         </button>
       </div>
 
-      <div className={styles.tree}>
+      <div className={styles.tree} id='blog'>
         <span className={styles.sectionTitle}>content & thoughts/</span>
         <ul className={styles.blogList}>
           {posts.map(
@@ -115,7 +136,7 @@ const Index = props => {
         </ul>
       </div>
 
-      <div className={styles.tree}>
+      <div className={styles.tree} id='awards'>
         <span className={styles.sectionTitle}>recognition/</span>
         <ul className={styles.blogList}>
           <li>
@@ -139,7 +160,7 @@ const Index = props => {
         </ul>
       </div>
 
-      <div className={styles.tree}>
+      <div className={styles.tree} id='current'>
         <span className={styles.sectionTitle}>my vibe/</span>
         <NowPlaying />
         <Book {...book} />

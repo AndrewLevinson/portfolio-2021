@@ -20,11 +20,13 @@ async function nowTrack(song) {
   const artistRes = await getCurrentArtistDetail(song.item.artists[0].href);
   const artistDetail = await artistRes.json();
   const genreList = artistDetail.genres;
+  const albumImageUrl = song.item.album.images.filter(item => item.width < 500)[0].url;
+
   return {
     title: song.item.name,
     artist: song.item.artists.map(_artist => _artist.name).join(', '),
     album: song.item.album.name,
-    albumImageUrl: song.item.album.images[0].url,
+    albumImageUrl: albumImageUrl || null,
     songUrl: song.item.external_urls.spotify,
     genreList,
     isPlaying: song.is_playing,
@@ -36,11 +38,13 @@ async function recentTrack(song) {
   const artistRes = await getCurrentArtistDetail(song.track.artists[0].href);
   const artistDetail = await artistRes.json();
   const genreList = artistDetail.genres;
+  const albumImageUrl = song.track.album.images.filter(item => item.width < 500)[0].url;
+
   return {
     title: song.track.name,
     artist: song.track.artists.map(_artist => _artist.name).join(', '),
     album: song.track.album.name,
-    albumImageUrl: song.track.album.images[0].url,
+    albumImageUrl: albumImageUrl || null,
     songUrl: song.track.external_urls.spotify,
     genreList,
     isPlaying: false,
