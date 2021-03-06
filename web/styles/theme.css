@@ -6,13 +6,13 @@
 
 .light {
   --background-color: #fff;
-  --text-color: #343434;
+  --text-color: #3a3939;
   --link-color: #40768c;
   --header-text-color: #343434;
   --tag-color: #262626;
   --spacer-background: hsl(197, 37%, 97%);
 
-  --tree-marker-color: hsla(0, 0%, 0%, 0.4);
+  --tree-marker-color: hsla(0, 0%, 0%, 0.2);
   --grey-mid: #666;
 
   --spotify-icon-color: #1ed760;
