@@ -17,10 +17,32 @@ const Index = props => {
   const { posts = [], projects = [], book = {} } = props;
   const [showAll, setShowAll] = useState(false);
 
+  const meta = {
+    title: 'Andrew Levinson: Design, Code, Data',
+    description: 'The personal portfolio website for Andrew Levinson showcasing design and data visualization projects',
+    image: '/images/meta_image.jpg',
+  };
+
   return (
     <main className={styles.main}>
       <Head>
-        <title>Andrew Levinson: Design, Code, Data</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta charSet='utf-8' />
+        <title>{meta.title}</title>
+        <meta name='description' content={meta.description} />
+        <meta property='og:title' content={meta.title} key='ogtitle' />
+        <meta property='og:description' content={meta.description} key='ogdesc' />
+        {/* tiwtter */}
+        <meta name='twitter:card' content='summary' key='twcard' />
+        <meta name='twitter:creator' content='@andrew_levinson' key='twhandle' />
+        {/* Open Graph */}
+        <meta property='og:url' content='https://andrewlevinson.me/' key='ogurl' />
+        <meta property='og:image' content={meta.image} key='ogimage' />
+        <meta property='og:site_name' content={meta.title} key='ogsitename' />
+        <meta property='og:title' content={meta.title} key='ogtitle' />
+        <meta property='og:description' content={meta.description} key='ogdesc' />
+
+        {/* favicon */}
         {/* <link rel='icon' href='/favicon.ico' /> */}
       </Head>
       <h1>Andrew Levinson</h1>
@@ -32,10 +54,11 @@ const Index = props => {
         </a>{' '}
         and occasionally teach{' '}
         <a href='https://courses.newschool.edu/courses/PUCD2126/6770/' target='_blank' rel='noopener noreferrer'>
-          Core 2: Interaction Lab
+          Core Interaction Lab
         </a>{' '}
-        at Parsons School of Design. Previously, I’ve been a product designer at a software agency, a financial
-        consultant, and even a touring musician in a metal band.
+        at Parsons School of Design. <br />
+        Previously, I’ve been a product designer at a software agency, a financial consultant, and even a touring
+        musician in a metal band.
         <span className={styles.jump}>
           <a href='#recent'>recent work</a> | <a href='#blog'>thoughts</a> | <a href='#current'>vibe</a>
         </span>
@@ -126,7 +149,9 @@ const Index = props => {
                     <Link href='/post/[slug]' as={`/post/${slug.current}`} passHref>
                       <a>
                         {title}
-                        <span className={styles.description}>{description}</span>
+                        <div>
+                          <span className={styles.description}>{description}</span>
+                        </div>
                       </a>
                     </Link>
                   </span>
@@ -142,19 +167,25 @@ const Index = props => {
           <li>
             <a href='https://www.storybench.org/how-the-wall-street-journal-visualized-the-2020-election-results/'>
               How the Wall Street Journal visualized the 2020 election results
-              <span className={styles.description}>Storybench interview on design and development process</span>
+              <div>
+                <span className={styles.description}>Storybench interview on design and development process</span>
+              </div>
             </a>
           </li>
           <li>
             <a href='https://www.informationisbeautifulawards.com/showcase/4279-the-united-states-water-crisis'>
               Kantar Information is Beautiful Awards 2019 Shortlist
-              <span className={styles.description}>Shortlisted for my United States Water Crisis visual essay</span>
+              <div>
+                <span className={styles.description}>Shortlisted for my United States Water Crisis visual essay</span>
+              </div>
             </a>
           </li>
           <li>
             <a href='https://scimaps.org/mapdetail/united_states_water__241'>
               Places & Spaces: Mapping Science
-              <span className={styles.description}>Featured macroscape in the 2020 collection</span>
+              <div>
+                <span className={styles.description}>Featured macroscape in the 2020 collection</span>
+              </div>
             </a>
           </li>
         </ul>

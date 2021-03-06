@@ -9,12 +9,29 @@ import client from '../../client';
 import RelatedPosts from '../../components/RelatedPosts/RelatedPosts';
 
 const Post = props => {
-  const { title, categories, description, publishedAt, body = [], otherPosts } = props;
+  const { title, categories, description, slug, publishedAt, body = [], otherPosts } = props;
 
   return (
     <article className={styles.article}>
       <Head>
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta charSet='utf-8' />
         <title>{title} by Andrew Levinson</title>
+        <meta name='description' content={description} />
+        <meta property='og:title' content={title} key='ogtitle' />
+        <meta property='og:description' content={description} key='ogdesc' />
+        {/* tiwtter */}
+        <meta name='twitter:card' content='summary' key='twcard' />
+        <meta name='twitter:creator' content='@andrew_levinson' key='twhandle' />
+        {/* Open Graph */}
+        <meta property='og:url' content={`https://andrewlevinson.me/post/${slug}`} key='ogurl' />
+        <meta property='og:image' content='/images/meta_image.jpg' key='ogimage' />
+        <meta property='og:site_name' content={title} key='ogsitename' />
+        <meta property='og:title' content={title} key='ogtitle' />
+        <meta property='og:description' content={description} key='ogdesc' />
+
+        {/* favicon */}
+        {/* <link rel='icon' href='/favicon.ico' /> */}
       </Head>
       <Link href='/' as={`/`} passHref>
         <a className='backLink'>⟵ back home/</a>
@@ -68,7 +85,7 @@ export async function getStaticProps({ params }) {
     .sort(() => 0.5 - Math.random())
     .slice(0, 3);
 
-  return { props: { ...(await client.fetch(query, { slug })), otherPosts } };
+  return { props: { ...(await client.fetch(query, { slug })), slug, otherPosts } };
 }
 
 export default Post;
