@@ -1,7 +1,8 @@
 {
   "root": true,
   "project": {
-    "name": "sanity-blog-starter"
+    "name": "portfolio-2021",
+    "basePath": "/studio"
   },
   "api": {
     "projectId": "j8yy6n2s",
@@ -16,9 +17,7 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [
