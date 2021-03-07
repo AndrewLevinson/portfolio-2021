@@ -1,14 +1,14 @@
 .article {
   width: 85vw;
   max-width: 640px;
-  margin: 15rem auto 10rem auto;
+  margin: 22rem auto 10rem auto;
   position: relative;
   h1 {
     font-weight: 300;
     margin-bottom: 1.5rem;
   }
   @media (max-width: 550px) {
-    margin: 10rem auto 10rem 5vw;
+    margin: 16rem auto 10rem 5vw;
   }
 }
 

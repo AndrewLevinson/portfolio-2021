@@ -1,7 +1,10 @@
 .holder {
-  margin: 4rem 0 0 4rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 5rem 0 0 4rem;
   @media (max-width: 550px) {
-    margin: 2.5rem 0 0 5vw;
+    margin: 4rem 0 0 5vw;
   }
 }
 

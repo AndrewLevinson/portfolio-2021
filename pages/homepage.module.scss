@@ -2,13 +2,13 @@
 .main {
   width: 85vw;
   max-width: 640px;
-  margin: 15rem auto 10rem auto;
+  margin: 22rem auto 10rem auto;
   flex-grow: 1;
   h1 {
     margin-bottom: 0;
   }
   @media (max-width: 550px) {
-    margin: 10rem auto 5rem 5vw;
+    margin: 16rem auto 5rem 5vw;
   }
 }
 
