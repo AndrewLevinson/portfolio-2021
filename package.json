@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "next",
-    "build": "next build",
-    "start": "next start"
+    "build": "npm run build:sanity && pwd && next build",
+    "start": "next start",
+    "build:sanity": "cd studio && sanity build ../public/studio -y && cd .."
   },
   "keywords": [],
   "author": "",
@@ -23,5 +24,8 @@
     "react-dom": "^17.0.1",
     "sass": "^1.32.7",
     "swr": "^0.4.2"
+  },
+  "devDependencies": {
+    "@sanity/cli": "^2.6.0"
   }
 }
