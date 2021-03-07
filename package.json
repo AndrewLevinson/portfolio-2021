@@ -7,7 +7,7 @@
     "dev": "next",
     "build": "npm run build:sanity && pwd && next build",
     "start": "next start",
-    "build:sanity": "cd studio && sanity build ../public/studio -y && cd .."
+    "build:sanity": "cd studio && sanity install && sanity build ../public/studio -y && cd .."
   },
   "keywords": [],
   "author": "",
