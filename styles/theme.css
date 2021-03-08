@@ -15,7 +15,7 @@
   --blockquote-background: hsla(197, 37%, 97%, 0.75);
   --tree-marker-color: hsla(0, 0%, 0%, 0.2);
   --grey-mid: #66605f;
-  --grey-light: #E8E1DF;
+  --grey-light: hsla(13, 16%, 89%, 0.5);
 
   --spotify-icon-color: #1ed760;
 }
@@ -32,7 +32,7 @@
   --blockquote-background: hsla(43, 74%, 8%, 0.75);
   --tree-marker-color: hsla(0, 0%, 100%, 0.4);
   --grey-mid: #c2bab8;
-  --grey-light: #66605F;
+  --grey-light: hsla(9, 4%, 39%, 0.5);
 
   --spotify-icon-color: #fffffe;
 }

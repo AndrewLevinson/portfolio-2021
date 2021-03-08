@@ -85,56 +85,77 @@ const Index = props => {
         <span className={styles.sectionTitle}>
           <WorkIcon /> recent work/
         </span>
-        <ul className={styles.blogList}>
+        <ul className={styles.projectList}>
           {projects
             .slice(0, showAll ? 100 : 3)
-            .map(({ _id, title, slug, publishedAt, category, description, relatedPost, directLink, imageSet }, i) => {
-              return (
-                slug && (
-                  <li key={_id}>
-                    {/* <span className={styles.markers}>
+            .map(
+              ({
+                _id,
+                title,
+                slug,
+                publishedAt,
+                category,
+                description,
+                relatedPost,
+                directLink,
+                imageSet,
+                mainImage,
+              }) => {
+                return (
+                  slug && (
+                    <li key={_id}>
+                      {/* <span className={styles.markers}>
                         {i === 0 ? '┌──' : i === (showAll ? projects.length - 1 : 2) ? '└──' : '├──'}
                       </span> */}
-                    <span>
-                      <a href={directLink}>
-                        <div>
-                          <span className={styles.tag}>
-                            {format(new Date(publishedAt), 'MMM. yyyy')}
-                            {category && ` • ${category}`}
-                            <br />
-                          </span>
-                        </div>
-                        {title}
-                        <span className={styles.description}>{description}</span>
-                      </a>
-                      {imageSet && (
-                        <div className={styles.imageSet}>
-                          {imageSet.map((image, i) => {
-                            return (
-                              <img
-                                key={image._key}
-                                src={urlFor(image).width(400).auto('format').url()}
-                                width='120'
-                                height='60'
-                                alt={`screenshot #${i + 1} of ${imageSet.length} for project titled: ${title}`}
-                              />
-                            );
-                          })}
-                        </div>
-                      )}
-                      {relatedPost && (
-                        <>
-                          <span className={styles.markers}>└──</span>
-                          <Link href='/post/[slug]' as={`/post/${relatedPost.current}`} passHref>
-                            <a style={{ fontSize: 16 }}>Related blog post ⟶</a>
-                          </Link>
-                        </>
-                      )}
-                    </span>
-                  </li>
-                )
-              );
-            })}
+                      <div>
+                        <img
+                          src={urlFor(mainImage).width(500).auto('format').url()}
+                          width='180'
+                          alt={`screenshot of project titled: ${title}`}
+                          className={styles.mainImage}
+                        />
+                      </div>
+                      <span>
+                        <a href={directLink}>
+                          <div>
+                            <span className={styles.tag}>
+                              {format(new Date(publishedAt), 'MMM. yyyy')}
+                              {category && ` • ${category}`}
+                              <br />
+                            </span>
+                          </div>
+                          {title}
+                          <span className={styles.description}>{description}</span>
+                          {imageSet && (
+                            <div className={styles.imageSet}>
+                              {imageSet.map((image, i) => {
+                                return (
+                                  <img
+                                    key={image._key}
+                                    src={urlFor(image).width(500).auto('format').url()}
+                                    width='120'
+                                    height='60'
+                                    alt={`screenshot #${i + 1} of ${imageSet.length} for project titled: ${title}`}
+                                  />
+                                );
+                              })}
+                            </div>
+                          )}
+                        </a>
+                        {relatedPost && (
+                          <>
+                            <span className={styles.markers}>└──</span>
+                            <Link href='/post/[slug]' as={`/post/${relatedPost.current}`} passHref>
+                              <a style={{ fontSize: 16 }}>Related blog post ⟶</a>
+                            </Link>
+                          </>
+                        )}
+                      </span>
+                    </li>
+                  )
+                );
+              }
+            )}
         </ul>
         <button className={styles.button} onClick={() => (showAll ? setShowAll(false) : setShowAll(true))}>
           {showAll ? 'Collapse –' : 'Show more work +'}
@@ -229,7 +250,8 @@ export async function getStaticProps() {
         publishedAt,
         "category": categories[0]->title,
         "relatedPost": relatedPost->slug,
-        "imageSet": imageSet[]
+        "imageSet": imageSet[],
+        mainImage
       }|order(publishedAt desc)
     `),
 
