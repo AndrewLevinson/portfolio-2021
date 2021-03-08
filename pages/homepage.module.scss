@@ -2,13 +2,13 @@
 .main {
   width: 85vw;
   max-width: 640px;
-  margin: 22rem auto 10rem auto;
+  margin: 19rem auto 10rem auto;
   flex-grow: 1;
   h1 {
     margin-bottom: 0;
   }
   @media (max-width: 550px) {
-    margin: 16rem auto 5rem 5vw;
+    margin: 15rem auto 5rem 5vw;
   }
 }
 
@@ -18,20 +18,21 @@
 }
 .intro {
   color: var(--text-color);
-  margin-bottom: 10rem;
+  margin-bottom: 8rem;
 
   .jump {
     display: block;
     margin-top: 1rem;
 
     a {
-      margin-right: 1.75rem;
-      margin-bottom: 0.5rem;
+      padding-right: 1.75rem;
+      padding-bottom: 0.5rem;
       white-space: nowrap;
       display: inline-block;
+      will-change: contents;
 
       &:last-of-type {
-        margin-right: 0;
+        padding-right: 0;
       }
 
       @for $i from 1 through 4 {

@@ -154,11 +154,9 @@ const Index = props => {
                   <span>
                     <Link href='/post/[slug]' as={`/post/${slug.current}`} passHref>
                       <a>
-                      <div>
-                         <span className={styles.tag}>
-                            {format(new Date(publishedAt), 'MMM. yyyy')}
-                          </span>
-                          </div>
+                        <div>
+                          <span className={styles.tag}>{format(new Date(publishedAt), 'MMM. yyyy')}</span>
+                        </div>
                         {title}
                         <div>
                           <span className={styles.description}>{description}</span>

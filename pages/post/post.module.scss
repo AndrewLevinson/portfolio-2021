@@ -54,8 +54,8 @@
 }
 
 .content {
-  *{
-    color: var(--text-color-full-opacity)
+  * {
+    color: var(--text-color-full-opacity);
   }
   p {
     margin-bottom: 2rem;
@@ -85,7 +85,7 @@
     background: var(--blockquote-background);
     border-left: 3px solid var(--link-color);
     margin: 3em 3rem;
-    padding: 3rem 2rem;
+    padding: 2rem;
     border-radius: var(--border-radius);
   }
 }
