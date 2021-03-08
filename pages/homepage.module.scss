@@ -40,7 +40,7 @@
           opacity: 0;
           transform: translateY(50%);
           animation: fade 0.8s ease-in-out forwards;
-          animation-delay: 1s + (350ms * $i);
+          animation-delay: 0.3s + (350ms * $i);
         }
       }
     }
