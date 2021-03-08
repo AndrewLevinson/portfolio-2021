@@ -18,11 +18,42 @@
 }
 .intro {
   color: var(--text-color);
-  margin-bottom: 5rem;
+  margin-bottom: 10rem;
 
   .jump {
     display: block;
     margin-top: 1rem;
+
+    a {
+      margin-right: 1.75rem;
+      margin-bottom: 0.5rem;
+      white-space: nowrap;
+      display: inline-block;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+
+      @for $i from 1 through 4 {
+        &:nth-child(#{$i}) {
+          opacity: 0;
+          transform: translateY(50%);
+          animation: fade 0.8s ease-in-out forwards;
+          animation-delay: 1s + (350ms * $i);
+        }
+      }
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: translateY(050%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   }
 }
 
@@ -41,7 +72,11 @@
     color: var(--grey-mid);
     display: inline-block;
     margin-bottom: 1rem;
-    font-size: 1.6rem;
+    font-size: 1.7rem;
+
+    svg {
+      margin-right: 0.5rem;
+    }
   }
 }
 
@@ -60,10 +95,6 @@
     font-size: 2.2rem;
     line-height: 1.35;
     display: inline-block;
-
-    &:hover * {
-      text-decoration-color: transparent;
-    }
   }
 
   .description {
@@ -98,11 +129,10 @@
     object-position: left center;
     margin-right: 1rem;
     margin-bottom: 1rem;
-    // border: 1px solid hsla(0, 0%, 90%, 0.5);
     border: 1px solid var(--grey-light);
     transition: 0.3s ease-in-out all;
 
-    @media (max-width:550px){
+    @media (max-width: 550px) {
       width: 100px;
       height: 50px;
       object-position: left top;
