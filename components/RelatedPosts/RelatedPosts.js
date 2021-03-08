@@ -13,7 +13,7 @@ function RelatedPosts({ posts }) {
                 <Link href='/post/[slug]' as={`/post/${post.slug}`} passHref>
                   <a>{post.title}</a>
                 </Link>
-                <h5>{post.description}</h5>
+                <p>{post.description}</p>
               </li>
             </ul>
           );

@@ -12,8 +12,12 @@
   margin-bottom: 2rem;
   margin-left: 0;
 
-  h5 {
-    font-weight: 400;
-    // opacity: 0.75;
+  a {
+    font-size: 1.9rem;
+  }
+
+  p {
+    color: var(--text-color);
+    font-size: 1.6rem;
   }
 }

@@ -87,6 +87,8 @@
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
 
   img {
     width: auto;
@@ -96,8 +98,15 @@
     object-position: left center;
     margin-right: 1rem;
     margin-bottom: 1rem;
-    border: 1px solid hsla(0, 0%, 90%, 0.5);
+    // border: 1px solid hsla(0, 0%, 90%, 0.5);
+    border: 1px solid var(--grey-light);
     transition: 0.3s ease-in-out all;
+
+    @media (max-width:550px){
+      width: 100px;
+      height: 50px;
+      object-position: left top;
+    }
 
     &:hover {
       transform: scale(1.5);

@@ -16,6 +16,7 @@ function ThemeChanger() {
         className={styles.button}
         onClick={() => (theme === 'dark' ? setTheme('light') : setTheme('dark'))}
         aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+        title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
       >
         <span className={styles.icon}>{theme === 'dark' ? '🌆' : '🏙'}</span>
         {/* <span className={[isMounted && styles.mounted, styles.label].join(' ')}>{theme} mode</span> */}

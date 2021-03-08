@@ -10,6 +10,7 @@ html {
 a {
   text-decoration-color: transparent;
   color: var(--link-color);
+  text-decoration-thickness: 0.125em;
 }
 
 a:hover,

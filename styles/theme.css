@@ -6,14 +6,16 @@
 
 .light {
   --background-color: #fff;
-  --text-color: #302f2f;
+  --text-color-full-opacity: #302f2f;
+  --text-color: hsla(0, 1%, 19%, 0.8);
   --link-color: #228176;
   --header-text-color: #383636;
   --tag-color: #262626;
   --spacer-background: hsl(197, 37%, 97%);
-
+  --blockquote-background: hsla(197, 37%, 97%, 0.75);
   --tree-marker-color: hsla(0, 0%, 0%, 0.2);
   --grey-mid: #66605f;
+  --grey-light: #E8E1DF;
 
   --spotify-icon-color: #1ed760;
 }
@@ -21,14 +23,16 @@
 .dark {
   /* --background-color: #081214; */
   --background-color: #240b05;
+  --text-color-full-opacity: #f0e8e6;
   --text-color: #f0e8e6;
   --link-color: #e9c46a;
   --header-text-color: #faf4f2;
   --tag-color: #fefefe;
   --spacer-background: hsl(43, 74%, 8%);
-
+  --blockquote-background: hsla(43, 74%, 8%, 0.75);
   --tree-marker-color: hsla(0, 0%, 100%, 0.4);
   --grey-mid: #c2bab8;
+  --grey-light: #66605F;
 
   --spotify-icon-color: #fffffe;
 }
