@@ -4,7 +4,7 @@ import Link from 'next/link';
 import groq from 'groq';
 import client from '../client';
 import imageUrlBuilder from '@sanity/image-url';
-import { format } from 'date-fns';
+import { format, isFuture } from 'date-fns';
 
 import NowPlaying from '../components/NowPlaying';
 import Book from '../components/Book';
@@ -18,7 +18,7 @@ function urlFor(source) {
   return imageUrlBuilder(client).image(source);
 }
 const Index = props => {
-  const { posts = [], projects = [], book = {} } = props;
+  const { posts = [], projects = [], book = {}, press = [] } = props;
   const [showAll, setShowAll] = useState(false);
 
   const meta = {
@@ -167,27 +167,26 @@ const Index = props => {
           <ThoughtsIcon /> thoughts/
         </span>
         <ul className={styles.blogList}>
-          {posts.map(
-            ({ _id, title, slug, publishedAt, description }, i) =>
-              slug && (
-                <li key={_id}>
-                  {/* <span className={styles.markers}>{i === 0 ? '┌──' : i === posts.length - 1 ? '└──' : '├──'}</span> */}
-                  <span>
-                    <Link href='/post/[slug]' as={`/post/${slug.current}`} passHref>
-                      <a>
-                        <div>
-                          <span className={styles.tag}>{format(new Date(publishedAt), 'MMM. yyyy')}</span>
-                        </div>
-                        {title}
-                        <div>
-                          <span className={styles.description}>{description}</span>
-                        </div>
-                      </a>
-                    </Link>
-                  </span>
-                </li>
-              )
-          )}
+          {posts.map(({ _id, title, slug, publishedAt, description }) => {
+            const comingSoon = isFuture(new Date(publishedAt));
+            return (
+              <li key={_id}>
+                <Link href='/post/[slug]' as={`/post/${slug.current}`} passHref>
+                  <a className={comingSoon && styles.future} tabindex={comingSoon && '-1'}>
+                    <div>
+                      <span className={styles.tag}>
+                        {comingSoon ? 'coming soon' : format(new Date(publishedAt), 'MMM. yyyy')}
+                      </span>
+                    </div>
+                    {title}
+                    <div>
+                      <span className={styles.description}>{description}</span>
+                    </div>
+                  </a>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
 
@@ -195,31 +194,19 @@ const Index = props => {
         <span className={styles.sectionTitle}>
           <AwardsIcon /> recognition/
         </span>
-        <ul className={styles.blogList}>
-          <li>
-            <a href='https://www.storybench.org/how-the-wall-street-journal-visualized-the-2020-election-results/'>
-              How the Wall Street Journal visualized the 2020 election results
-              <div>
-                <span className={styles.description}>Storybench interview on design and development process</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href='https://www.informationisbeautifulawards.com/showcase/4279-the-united-states-water-crisis'>
-              Kantar Information is Beautiful Awards 2019 Shortlist
-              <div>
-                <span className={styles.description}>Shortlisted for my United States Water Crisis visual essay</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href='https://scimaps.org/mapdetail/united_states_water__241'>
-              Places & Spaces: Mapping Science
-              <div>
-                <span className={styles.description}>Featured macroscape in the 2020 collection</span>
-              </div>
-            </a>
-          </li>
+        <ul className={styles.awardsList}>
+          {press.map(({ _id, title, tag, directLink }) => {
+            return (
+              <li key={_id}>
+                <a href={directLink}>
+                  <div>
+                    <span className={styles.tag}>{tag}</span>
+                  </div>
+                  {title}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </div>
 
@@ -238,7 +225,7 @@ export async function getStaticProps() {
   return {
     props: {
       posts: await client.fetch(groq`
-      *[_type == "post" && publishedAt < now()]|order(publishedAt desc)
+      *[_type == "post"]|order(publishedAt desc)
     `),
       projects: await client.fetch(groq`
       *[_type == "project"]{
@@ -262,6 +249,10 @@ export async function getStaticProps() {
         genre,
         coverImage 
       }
+      `),
+
+      press: await client.fetch(groq`
+      *[_type == "recognition"]|order(publishedAt desc)
       `),
     },
   };

@@ -12,7 +12,6 @@ export default async (_, res) => {
   // pull info out based on nowPlaying or Recent (seperate bc data structure diffs)
   const track = recentRes ? await recentTrack(songData.items[0]) : await nowTrack(songData);
 
-  res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=30');
   return res.status(200).json({ ...track });
 };
 

@@ -18,7 +18,7 @@
 }
 .intro {
   color: var(--text-color);
-  margin-bottom: 8rem;
+  margin-bottom: 6rem;
 
   .jump {
     display: block;
@@ -40,7 +40,7 @@
           opacity: 0;
           transform: translateY(50%);
           animation: fade 0.8s ease-in-out forwards;
-          animation-delay: 0.3s + (350ms * $i);
+          animation-delay: 350ms * $i;
         }
       }
     }
@@ -89,6 +89,10 @@
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
+  }
+  .future {
+    pointer-events: none;
+    opacity: 0.5;
   }
 
   a {
@@ -203,6 +207,17 @@
       text-overflow: ellipsis;
       width: calc(90vw - 2rem);
     }
+  }
+}
+
+.awardsList {
+  composes: blogList;
+
+  li {
+    margin-bottom: 1rem;
+  }
+  a {
+    font-size: 1.8rem;
   }
 }
 

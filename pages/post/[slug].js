@@ -66,7 +66,7 @@ const query = groq`*[_type == "post" && slug.current == $slug][0]{
 
 export async function getStaticPaths() {
   const posts = await client.fetch(groq`
-      *[_type == "post"]
+      *[_type == "post" && publishedAt < now()]
     `);
   const paths = posts.map(post => ({
     params: { slug: post.slug.current },
@@ -78,7 +78,7 @@ export async function getStaticProps({ params }) {
   const { slug = '' } = params;
 
   const posts = await client.fetch(groq`
-      *[_type == "post"]{
+      *[_type == "post" && publishedAt < now()]{
         title, description, "slug": slug.current
       }
     `);
