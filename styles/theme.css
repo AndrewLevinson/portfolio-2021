@@ -16,7 +16,8 @@
   --tree-marker-color: hsla(0, 0%, 0%, 0.2);
   --grey-mid: #66605f;
   --grey-light: hsla(13, 16%, 89%, 0.5);
-
+  --project-border-color: hsla(0, 0%, 80%, 0.25);
+  --box-shadow-color: #ccc;
   --spotify-icon-color: #1ed760;
 }
 
@@ -33,6 +34,8 @@
   --tree-marker-color: hsla(0, 0%, 100%, 0.4);
   --grey-mid: #c2bab8;
   --grey-light: hsla(9, 4%, 39%, 0.5);
+  --project-border-color: hsla(0, 0%, 30%, 0.5);
+  --box-shadow-color: hsl(43, 74%, 15%);
 
   --spotify-icon-color: #fffffe;
 }

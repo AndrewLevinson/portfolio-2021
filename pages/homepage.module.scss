@@ -1,6 +1,6 @@
 /* homepage */
 .main {
-  width: 85vw;
+  width: 90vw;
   max-width: 640px;
   margin: 19rem auto 10rem auto;
   flex-grow: 1;
@@ -144,15 +144,15 @@
   composes: blogList;
 
   li {
-    border: 1px solid hsla(0, 0%, 80%, 0.2);
-    box-shadow: 0 1px 8px -5px #ccc;
+    border: 1px solid var(--project-border-color);
+    box-shadow: 0 1px 8px -5px var(--box-shadow-color);
     border-radius: var(--border-radius);
     padding: 1.5rem;
     margin-bottom: 3rem;
     transition: 0.2s ease-in-out box-shadow;
 
     &:hover {
-      box-shadow: 0 1px 8px -5px #ccc, 0 2px 4px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 1px 8px -5px var(--box-shadow-color), 0 1px 8px -2px var(--box-shadow-color);
     }
   }
   a {
@@ -199,7 +199,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      width: calc(85vw - 2rem);
+      width: calc(90vw - 2rem);
     }
   }
 }

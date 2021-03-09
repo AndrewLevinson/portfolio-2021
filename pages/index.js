@@ -107,14 +107,14 @@ const Index = props => {
                       {/* <span className={styles.markers}>
                         {i === 0 ? '┌──' : i === (showAll ? projects.length - 1 : 2) ? '└──' : '├──'}
                       </span> */}
-                      <div>
+                      <a href={directLink} style={{ display: 'block' }}>
                         <img
                           src={urlFor(mainImage).width(500).auto('format').url()}
                           width='180'
                           alt={`screenshot of project titled: ${title}`}
                           className={styles.mainImage}
                         />
-                      </div>
+                      </a>
                       <span>
                         <a href={directLink}>
                           <div>
