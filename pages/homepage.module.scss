@@ -184,6 +184,7 @@
     li {
       flex-direction: column;
       padding: 0;
+      margin-bottom: 4rem;
       & > span {
         padding: 1rem;
         padding-bottom: 0.5rem;
@@ -193,6 +194,7 @@
     .mainImage {
       max-height: unset;
       width: 100%;
+      border-radius: var(--border-radius) var(--border-radius) 0 0;
       border-bottom: 1px solid var(--grey-light);
     }
     .description {
