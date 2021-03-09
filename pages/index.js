@@ -172,7 +172,7 @@ const Index = props => {
             return (
               <li key={_id}>
                 <Link href='/post/[slug]' as={`/post/${slug.current}`} passHref>
-                  <a className={comingSoon && styles.future} tabindex={comingSoon && '-1'}>
+                  <a className={comingSoon ? styles.future : null} tabIndex={comingSoon ? '-1' : null}>
                     <div>
                       <span className={styles.tag}>
                         {comingSoon ? 'coming soon' : format(new Date(publishedAt), 'MMM. yyyy')}
