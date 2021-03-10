@@ -55,15 +55,9 @@ const Index = props => {
       <h1>Andrew Levinson</h1>
       <h4 className={styles.subhed}>Designer / Developer / Data Visualizer</h4>
       <p className={styles.intro}>
-        Currently, I design & code visuals at{' '}
-        <a href='https://graphics.wsj.com/' target='_blank' rel='noopener noreferrer'>
-          The Wall Street Journal
-        </a>{' '}
-        and occasionally teach{' '}
-        <a href='https://courses.newschool.edu/courses/PUCD2126/6770/' target='_blank' rel='noopener noreferrer'>
-          Core Interaction Lab
-        </a>{' '}
-        at Parsons School of Design. <br />
+        Currently, I design & code visuals at <a href='https://graphics.wsj.com/'>The Wall Street Journal</a> and
+        occasionally teach <a href='https://courses.newschool.edu/courses/PUCD2126/6770/'>Core Interaction Lab</a> at
+        Parsons School of Design. <br />
         Previously, I’ve been a product designer at a software agency, a financial consultant, and even a touring
         musician in a metal band.
         <span className={styles.jump}>
@@ -110,7 +104,7 @@ const Index = props => {
                       {/* <span className={styles.markers}>
                         {i === 0 ? '┌──' : i === (showAll ? projects.length - 1 : 2) ? '└──' : '├──'}
                       </span> */}
-                      <a href={directLink} style={{ display: 'block' }}>
+                      <a href={directLink} style={{ display: 'block' }} target='_blank' rel='noopener noreferrer'>
                         <img
                           src={urlFor(mainImage).width(500).auto('format').url()}
                           width='180'
@@ -119,7 +113,7 @@ const Index = props => {
                         />
                       </a>
                       <span>
-                        <a href={directLink}>
+                        <a href={directLink} target='_blank' rel='noopener noreferrer'>
                           <div>
                             <span className={styles.tag}>
                               {format(new Date(publishedAt), 'MMM. yyyy')}

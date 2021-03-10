@@ -1,0 +1,17 @@
+To Dos
+
+- <li> on project should be wrapped in link entirely
+- add code block syntax highlighting to blog blocks
+- curved (svg?) text on theme changer
+- add theme changer to footer
+- make footer better looking. Add anchor links to homepage for sections? 
+- figure out what to do with "recognition" press? etc.
+- add new projects (cookies, ease-energy, case studies??)
+- top artists from spotify? link to spotify profile?playlist?
+- embed latest tweet + follow button
+- add analytics. Fathom? Plausible? something on edge
+- responsive images. Shorter on mobile. Taller on desktop.
+- add related project link to blog post (i.e., Election post should have link to project in a component. Maybe small version of homepage project component?)
+- add resume pdf to public folder.
+- better bio. 
+- add README
