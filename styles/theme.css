@@ -1,6 +1,4 @@
 :root {
-  /* --link-color: #398b99; */
-  /* --link-color: #2e63b8; */
   --border-radius: 2px;
 }
 
@@ -16,13 +14,17 @@
   --tree-marker-color: hsla(0, 0%, 0%, 0.2);
   --grey-mid: #66605f;
   --grey-light: hsla(13, 16%, 89%, 0.5);
-  --project-border-color: hsla(0, 0%, 80%, 0.25);
+
+  /* projects */
+  --project-background-color: hsla(173, 58%, 98%, 0.5);
+  --project-border-color: hsla(173, 8%, 82%, 0.4);
   --box-shadow-color: #ccc;
+  --project-band-color: hsla(173, 58%, 32%, 1);
+
   --spotify-icon-color: #1ed760;
 }
 
 .dark {
-  /* --background-color: #081214; */
   --background-color: #240b05;
   --text-color-full-opacity: #f0e8e6;
   --text-color: #f0e8e6;
@@ -34,8 +36,12 @@
   --tree-marker-color: hsla(0, 0%, 100%, 0.4);
   --grey-mid: #c2bab8;
   --grey-light: hsla(9, 4%, 39%, 0.5);
-  --project-border-color: hsla(0, 0%, 30%, 0.75);
-  --box-shadow-color: hsl(43, 74%, 20%);
+
+  /* projects */
+  --project-background-color: hsla(12, 76%, 8%, 0.2);
+  --project-border-color: hsla(43, 10%, 36%, 0.4);
+  --box-shadow-color: hsl(12, 10%, 25%);
+  --project-band-color: hsl(43, 74%, 66%);
 
   --spotify-icon-color: #fffffe;
 }

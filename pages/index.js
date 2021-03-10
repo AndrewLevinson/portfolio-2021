@@ -12,6 +12,7 @@ import VibeIcon from '../components/Icons/VibeIcon';
 import WorkIcon from '../components/Icons/WorkIcon';
 import ThoughtsIcon from '../components/Icons/ThoughtsIcon';
 import AwardsIcon from '../components/Icons/AwardsIcon';
+import LaunchIcon from '../components/Icons/LaunchIcon';
 import styles from './homepage.module.scss';
 
 function urlFor(source) {
@@ -104,6 +105,8 @@ const Index = props => {
                 return (
                   slug && (
                     <li key={_id}>
+                      <div className={styles.band} />
+
                       {/* <span className={styles.markers}>
                         {i === 0 ? '┌──' : i === (showAll ? projects.length - 1 : 2) ? '└──' : '├──'}
                       </span> */}
@@ -123,8 +126,11 @@ const Index = props => {
                               {category && ` • ${category}`}
                               <br />
                             </span>
+                          </div>{' '}
+                          {title}{' '}
+                          <div className={styles.launch}>
+                            <LaunchIcon customStyle={{ display: 'block' }} />
                           </div>
-                          {title}
                           <span className={styles.description}>{description}</span>
                           {imageSet && (
                             <div className={styles.imageSet}>

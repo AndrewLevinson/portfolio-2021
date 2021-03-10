@@ -60,7 +60,7 @@
 
 /* tree */
 .tree {
-  margin-bottom: 5rem;
+  margin-bottom: 7rem;
 
   .markers {
     font-family: monospace;
@@ -154,9 +154,38 @@
     padding: 1.5rem;
     margin-bottom: 3rem;
     transition: 0.2s ease-in-out box-shadow;
+    background-color: var(--project-background-color);
+    position: relative;
 
     &:hover {
-      box-shadow: 0 1px 8px -5px var(--box-shadow-color), 0 1px 8px -2px var(--box-shadow-color);
+      box-shadow: 0 1px 8px -5px var(--box-shadow-color), 0 1px 8px -4px var(--box-shadow-color);
+    }
+
+    .band {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background-color: var(--project-band-color);
+      z-index: 2;
+      border-radius: var(--border-radius) 0 0 var(--border-radius);
+
+      @media (max-width: 550px) {
+        display: none;
+      }
+    }
+
+    .launch {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      @media (max-width: 550px) {
+        position: static;
+        display: inline-block;
+        // margin-left: 1rem;
+        vertical-align: baseline;
+      }
     }
   }
   a {
@@ -175,7 +204,7 @@
     object-fit: cover;
     object-position: top center;
     margin-right: 2rem;
-    /* border: 1px solid var(--grey-light); */
+    // border: 1px solid var(--grey-light);
   }
 
   @media (max-width: 650px) {
