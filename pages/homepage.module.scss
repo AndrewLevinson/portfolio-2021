@@ -84,11 +84,8 @@
 .blogList {
   margin: 0;
 
-  li {
+  article {
     margin-bottom: 2.5rem;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
   }
   .future {
     pointer-events: none;
@@ -99,6 +96,7 @@
     font-size: 2.2rem;
     line-height: 1.35;
     display: inline-block;
+    letter-spacing: -0.04rem;
   }
 
   .description {
@@ -107,6 +105,7 @@
     font-size: 1.7rem;
     line-height: 1.4;
     margin-top: 0.5rem;
+    letter-spacing: -0.03rem;
   }
 
   .tag {
@@ -114,6 +113,7 @@
     font-size: 1.4rem;
     white-space: nowrap;
     display: inline-block;
+    letter-spacing: -0.02rem;
   }
 
   .imageSet {
@@ -147,18 +147,21 @@
 .projectList {
   composes: blogList;
 
-  li {
-    border: 1px solid var(--project-border-color);
-    box-shadow: 0 1px 8px -5px var(--box-shadow-color);
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-    margin-bottom: 3rem;
-    transition: 0.2s ease-in-out box-shadow;
-    background-color: var(--project-background-color);
-    position: relative;
+  article {
+    & > a {
+      border: 1px solid var(--project-border-color);
+      box-shadow: 0 1px 8px -5px var(--box-shadow-color);
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+      transition: 0.2s ease-in-out box-shadow;
+      background-color: var(--project-background-color);
+      position: relative;
 
-    &:hover {
-      box-shadow: 0 1px 8px -5px var(--box-shadow-color), 0 1px 8px -4px var(--box-shadow-color);
+      &:hover,
+      &:focus {
+        box-shadow: 0 1px 8px -5px var(--box-shadow-color), 0 1px 8px -4px var(--box-shadow-color);
+      }
     }
 
     .band {
@@ -176,6 +179,22 @@
       }
     }
 
+    .flex {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      h3 {
+        font-size: 1.9rem;
+        line-height: 1.3;
+        margin: 0;
+        font-weight: 400;
+        color: var(--link-color);
+        letter-spacing: -0.02rem;
+        display: inline-block;
+      }
+    }
+
     .launch {
       position: absolute;
       top: 1rem;
@@ -188,10 +207,7 @@
       }
     }
   }
-  a {
-    font-size: 1.85rem;
-    line-height: 1.3;
-  }
+
   .description {
     font-size: 1.6rem;
     margin-bottom: 0.5rem;
@@ -214,14 +230,16 @@
   }
 
   @media (max-width: 550px) {
-    li {
+    .flex {
       flex-direction: column;
-      padding: 0;
-      margin-bottom: 4rem;
       & > span {
         padding: 1rem;
         padding-bottom: 0.5rem;
       }
+    }
+    article > a {
+      padding: 0;
+      margin-bottom: 4rem;
     }
 
     .mainImage {
@@ -242,11 +260,12 @@
 .awardsList {
   composes: blogList;
 
-  li {
+  article {
     margin-bottom: 1rem;
   }
   a {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
+    letter-spacing: -0.02rem;
   }
 }
 

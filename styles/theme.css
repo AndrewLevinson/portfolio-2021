@@ -39,8 +39,8 @@
 
   /* projects */
   --project-background-color: hsla(12, 76%, 8%, 0.2);
-  --project-border-color: hsla(43, 10%, 36%, 0.4);
-  --box-shadow-color: hsl(12, 10%, 25%);
+  --project-border-color: hsla(43, 5%, 26%, 0.8);
+  --box-shadow-color: hsla(12, 3%, 50%, 0.75);
   --project-band-color: hsl(43, 74%, 66%);
 
   --spotify-icon-color: #fffffe;

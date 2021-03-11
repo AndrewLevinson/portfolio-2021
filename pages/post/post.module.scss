@@ -25,6 +25,7 @@
   color: var(--grey-mid);
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  letter-spacing: -0.01rem;
 }
 
 .tags {
@@ -38,6 +39,7 @@
     padding: 0.1rem 0.5rem 0.15rem;
     margin-right: 1rem;
     font-size: 1.3rem;
+    letter-spacing: -0.015rem;
 
     &:last-of-type {
       margin-right: 0;

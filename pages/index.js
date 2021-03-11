@@ -67,20 +67,20 @@ const Index = props => {
           <a href='#blog'>
             <ThoughtsIcon /> thoughts
           </a>
-          <a href='#awards'>
-            <AwardsIcon /> recognition
-          </a>
+          {/* <a href='#awards'>
+            <AwardsIcon /> press
+          </a> */}
           <a href='#current'>
             <VibeIcon /> vibe
           </a>
         </span>
       </p>
 
-      <div className={styles.tree} id='recent'>
+      <section className={styles.tree} id='recent'>
         <span className={styles.sectionTitle}>
           <WorkIcon /> recent work/
         </span>
-        <ul className={styles.projectList}>
+        <div className={styles.projectList}>
           {projects
             .slice(0, showAll ? 100 : 3)
             .map(
@@ -98,79 +98,75 @@ const Index = props => {
               }) => {
                 return (
                   slug && (
-                    <li key={_id}>
-                      <div className={styles.band} />
-
-                      {/* <span className={styles.markers}>
-                        {i === 0 ? '┌──' : i === (showAll ? projects.length - 1 : 2) ? '└──' : '├──'}
-                      </span> */}
-                      <a href={directLink} style={{ display: 'block' }} target='_blank' rel='noopener noreferrer'>
-                        <img
-                          src={urlFor(mainImage).width(500).auto('format').url()}
-                          width='180'
-                          alt={`screenshot of project titled: ${title}`}
-                          className={styles.mainImage}
-                        />
-                      </a>
-                      <span>
-                        <a href={directLink} target='_blank' rel='noopener noreferrer'>
-                          <div>
-                            <span className={styles.tag}>
-                              {format(new Date(publishedAt), 'MMM. yyyy')}
-                              {category && ` • ${category}`}
-                              <br />
-                            </span>
-                          </div>{' '}
-                          {title}{' '}
-                          <div className={styles.launch}>
-                            <LaunchIcon customStyle={{ display: 'block' }} />
-                          </div>
-                          <span className={styles.description}>{description}</span>
-                          {imageSet && (
-                            <div className={styles.imageSet}>
-                              {imageSet.map((image, i) => {
-                                return (
-                                  <img
-                                    key={image._key}
-                                    src={urlFor(image).width(500).auto('format').url()}
-                                    width='120'
-                                    height='60'
-                                    alt={`screenshot #${i + 1} of ${imageSet.length} for project titled: ${title}`}
-                                  />
-                                );
-                              })}
+                    <article key={_id}>
+                      <a href={directLink} target='_blank' rel='noopener noreferrer' rel='bookmark'>
+                        <div className={styles.band} />
+                        <div className={styles.flex}>
+                          <img
+                            src={urlFor(mainImage).width(500).auto('format').url()}
+                            width='180'
+                            alt={`screenshot of project titled: ${title}`}
+                            className={styles.mainImage}
+                          />
+                          <span>
+                            <div>
+                              <span className={styles.tag}>
+                                {format(new Date(publishedAt), 'MMM. yyyy')}
+                                {category && ` • ${category}`}
+                                <br />
+                              </span>
+                            </div>{' '}
+                            <h3>{title}</h3> {/* {title}{' '} */}
+                            <div className={styles.launch}>
+                              <LaunchIcon customStyle={{ display: 'block' }} />
                             </div>
-                          )}
-                        </a>
-                        {relatedPost && (
-                          <>
-                            <span className={styles.markers}>└──</span>
-                            <Link href='/post/[slug]' as={`/post/${relatedPost.current}`} passHref>
-                              <a style={{ fontSize: 16 }}>Related blog post ⟶</a>
-                            </Link>
-                          </>
-                        )}
-                      </span>
-                    </li>
+                            <span className={styles.description}>{description}</span>
+                            {imageSet && (
+                              <div className={styles.imageSet}>
+                                {imageSet.map((image, i) => {
+                                  return (
+                                    <img
+                                      key={image._key}
+                                      src={urlFor(image).width(500).auto('format').url()}
+                                      width='120'
+                                      height='60'
+                                      alt={`screenshot #${i + 1} of ${imageSet.length} for project titled: ${title}`}
+                                    />
+                                  );
+                                })}
+                              </div>
+                            )}
+                            {relatedPost && (
+                              <>
+                                <span className={styles.markers}>└──</span>
+                                <Link href='/post/[slug]' as={`/post/${relatedPost.current}`} passHref>
+                                  <a style={{ fontSize: 16 }}>Related blog post ⟶</a>
+                                </Link>
+                              </>
+                            )}
+                          </span>
+                        </div>
+                      </a>
+                    </article>
                   )
                 );
               }
             )}
-        </ul>
+        </div>
         <button className={styles.button} onClick={() => (showAll ? setShowAll(false) : setShowAll(true))}>
           {showAll ? 'Collapse –' : 'Show more work +'}
         </button>
-      </div>
+      </section>
 
-      <div className={styles.tree} id='blog'>
+      <section className={styles.tree} id='blog'>
         <span className={styles.sectionTitle}>
           <ThoughtsIcon /> thoughts/
         </span>
-        <ul className={styles.blogList}>
+        <div className={styles.blogList}>
           {posts.map(({ _id, title, slug, publishedAt, description }) => {
             const comingSoon = isFuture(new Date(publishedAt));
             return (
-              <li key={_id}>
+              <article key={_id}>
                 <Link href='/post/[slug]' as={`/post/${slug.current}`} passHref>
                   <a className={comingSoon ? styles.future : null} tabIndex={comingSoon ? '-1' : null}>
                     <div>
@@ -184,39 +180,39 @@ const Index = props => {
                     </div>
                   </a>
                 </Link>
-              </li>
+              </article>
             );
           })}
-        </ul>
-      </div>
+        </div>
+      </section>
 
-      <div className={styles.tree} id='awards'>
+      <section className={styles.tree} id='current'>
         <span className={styles.sectionTitle}>
-          <AwardsIcon /> recognition/
+          <VibeIcon /> my vibe/
         </span>
-        <ul className={styles.awardsList}>
+        <NowPlaying />
+        <Book {...book} />
+      </section>
+
+      <section className={styles.tree} id='awards'>
+        <span className={styles.sectionTitle}>
+          <AwardsIcon /> press/
+        </span>
+        <div className={styles.awardsList}>
           {press.map(({ _id, title, tag, directLink }) => {
             return (
-              <li key={_id}>
+              <article key={_id}>
                 <a href={directLink}>
                   <div>
                     <span className={styles.tag}>{tag}</span>
                   </div>
                   {title}
                 </a>
-              </li>
+              </article>
             );
           })}
-        </ul>
-      </div>
-
-      <div className={styles.tree} id='current'>
-        <span className={styles.sectionTitle}>
-          <VibeIcon /> my vibe/
-        </span>
-        <NowPlaying />
-        <Book {...book} />
-      </div>
+        </div>
+      </section>
     </main>
   );
 };
