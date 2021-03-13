@@ -18,8 +18,7 @@ function ThemeChanger() {
         aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
         title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
       >
-        <span className={styles.icon}>{theme === 'dark' ? '🌆' : '🏙'}</span>
-        {/* <span className={[isMounted && styles.mounted, styles.label].join(' ')}>{theme} mode</span> */}
+        {theme === 'dark' ? '🌃' : '🌇'}
       </button>
     </div>
   );

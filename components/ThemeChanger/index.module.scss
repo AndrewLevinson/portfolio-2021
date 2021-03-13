@@ -8,6 +8,17 @@
   }
 }
 
+.curvedText {
+  font-size: 100px;
+  path {
+    fill: transparent;
+  }
+
+  text {
+    fill: #ff9800;
+  }
+}
+
 .button {
   width: fit-content;
   font-size: 3.5rem;
@@ -15,20 +26,18 @@
   border: none;
   background-color: transparent;
   line-height: 1;
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1);
+  transition: 0.2s ease-in-out all;
 
-  .icon {
-    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1);
-    transition: 0.2s ease-in-out all;
-    display: inline-block;
-  }
   &:hover,
   &:focus {
-    .icon {
-      transform: translateY(-1px) rotate(2deg);
-      box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
-    }
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+
     cursor: pointer;
     outline: none;
+  }
+  &:hover {
+    transform: translateY(-1px);
   }
 }
 

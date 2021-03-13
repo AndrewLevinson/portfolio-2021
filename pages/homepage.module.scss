@@ -161,6 +161,9 @@
       &:hover,
       &:focus {
         box-shadow: 0 1px 8px -5px var(--box-shadow-color), 0 1px 8px -4px var(--box-shadow-color);
+        h3 {
+          text-decoration: 0.125em underline var(--link-color);
+        }
       }
     }
 

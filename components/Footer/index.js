@@ -1,9 +1,11 @@
 import styles from './index.module.scss';
 import Link from 'next/link';
+import ThemeChanger from '../ThemeChanger';
 
 function Footer() {
   return (
     <footer className={styles.footer}>
+      <ThemeChanger />
       <div className={styles.me}>
         <Link href='/' as={`/`} passHref>
           <img src='/images/default_avatar.jpg' width='85' className={styles.avatar} alt='avatar image of me, Andrew' />

@@ -16,7 +16,7 @@
   --grey-light: hsla(13, 16%, 89%, 0.5);
 
   /* projects */
-  --project-background-color: hsla(173, 58%, 98%, 0.5);
+  --project-background-color: hsla(173, 8%, 98%, 0.3);
   --project-border-color: hsla(173, 8%, 82%, 0.4);
   --box-shadow-color: #ccc;
   --project-band-color: hsla(173, 58%, 32%, 1);

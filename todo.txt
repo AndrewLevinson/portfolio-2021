@@ -1,6 +1,5 @@
 To Dos
 
-- <li> on project should be wrapped in link entirely
 - add code block syntax highlighting to blog blocks
 - curved (svg?) text on theme changer
 - add theme changer to footer

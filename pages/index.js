@@ -75,7 +75,6 @@ const Index = props => {
           </a>
         </span>
       </p>
-
       <section className={styles.tree} id='recent'>
         <span className={styles.sectionTitle}>
           <WorkIcon /> recent work/
@@ -103,7 +102,7 @@ const Index = props => {
                         <div className={styles.band} />
                         <div className={styles.flex}>
                           <img
-                            src={urlFor(mainImage).width(500).auto('format').url()}
+                            src={urlFor(mainImage).width(625).auto('format').url()}
                             width='180'
                             alt={`screenshot of project titled: ${title}`}
                             className={styles.mainImage}
@@ -116,10 +115,12 @@ const Index = props => {
                                 <br />
                               </span>
                             </div>{' '}
-                            <h3>{title}</h3> {/* {title}{' '} */}
-                            <div className={styles.launch}>
-                              <LaunchIcon customStyle={{ display: 'block' }} />
-                            </div>
+                            <h3>
+                              {title}{' '}
+                              <div className={styles.launch}>
+                                <LaunchIcon customStyle={{ display: 'block' }} />
+                              </div>
+                            </h3>
                             <span className={styles.description}>{description}</span>
                             {imageSet && (
                               <div className={styles.imageSet}>
@@ -127,7 +128,7 @@ const Index = props => {
                                   return (
                                     <img
                                       key={image._key}
-                                      src={urlFor(image).width(500).auto('format').url()}
+                                      src={urlFor(image).width(600).auto('format').url()}
                                       width='120'
                                       height='60'
                                       alt={`screenshot #${i + 1} of ${imageSet.length} for project titled: ${title}`}
@@ -157,7 +158,6 @@ const Index = props => {
           {showAll ? 'Collapse –' : 'Show more work +'}
         </button>
       </section>
-
       <section className={styles.tree} id='blog'>
         <span className={styles.sectionTitle}>
           <ThoughtsIcon /> thoughts/
@@ -185,7 +185,6 @@ const Index = props => {
           })}
         </div>
       </section>
-
       <section className={styles.tree} id='current'>
         <span className={styles.sectionTitle}>
           <VibeIcon /> my vibe/
@@ -193,7 +192,6 @@ const Index = props => {
         <NowPlaying />
         <Book {...book} />
       </section>
-
       <section className={styles.tree} id='awards'>
         <span className={styles.sectionTitle}>
           <AwardsIcon /> press/
