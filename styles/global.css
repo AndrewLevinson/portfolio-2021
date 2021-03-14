@@ -19,6 +19,21 @@ a:focus {
   outline-color: var(--link-color);
 }
 
+/* a::after {
+  content: ' →';
+  transform: translateX(-10px);
+  opacity: 0;
+  position: absolute;
+  margin-left: 10px;
+  transition: 0.3s ease-out all;
+}
+
+a:hover::after,
+a:focus::after {
+  transform: translateX(0);
+  opacity: 1;
+} */
+
 /* _app.js layout style */
 .container {
   position: relative;

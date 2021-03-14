@@ -8,17 +8,6 @@
   }
 }
 
-.curvedText {
-  font-size: 100px;
-  path {
-    fill: transparent;
-  }
-
-  text {
-    fill: #ff9800;
-  }
-}
-
 .button {
   width: fit-content;
   font-size: 3.5rem;
@@ -36,8 +25,9 @@
     cursor: pointer;
     outline: none;
   }
-  &:hover {
-    transform: translateY(-1px);
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-1px) scale(1.1);
   }
 }
 

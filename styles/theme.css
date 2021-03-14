@@ -5,7 +5,7 @@
 .light {
   --background-color: #fff;
   --text-color-full-opacity: #302f2f;
-  --text-color: hsla(0, 1%, 19%, 0.8);
+  --text-color: hsla(0, 1%, 19%, 0.9);
   --link-color: #228176;
   --header-text-color: #383636;
   --tag-color: #262626;

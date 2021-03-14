@@ -1,37 +1,48 @@
 import styles from './index.module.scss';
 import Link from 'next/link';
 import ThemeChanger from '../ThemeChanger';
+import GithubIcon from '../Icons/GithubIcon';
+import TwitterIcon from '../Icons/TwitterIcon';
+import EmailIcon from '../Icons/EmailIcon';
 
 function Footer() {
   return (
     <footer className={styles.footer}>
-      <ThemeChanger />
+      <div className={styles.themeHolder}>
+        <ThemeChanger />
+      </div>
       <div className={styles.me}>
         <Link href='/' as={`/`} passHref>
-          <img src='/images/default_avatar.jpg' width='85' className={styles.avatar} alt='avatar image of me, Andrew' />
+          <a href='/'>
+            <img
+              src='/images/default_avatar.jpg'
+              width='85'
+              className={styles.avatar}
+              alt='avatar image of me, Andrew'
+            />
+          </a>
         </Link>
-        <p>Andrew Levinson is a graphics reporter for The Wall Street Journal</p>
+        {/* <p>Andrew Levinson is a graphics reporter for The Wall Street Journal</p> */}
         <ul>
           <li>
             <a href='mailto:andrewlevins@gmail.com' target='_blank' rel='noopener'>
-              Email
+              <EmailIcon />
+              <title>Email</title>
             </a>
           </li>
           <li>
             <a href='https://twitter.com/andrew_levinson' target='_blank' rel='noopener noreferrer'>
-              @andrew_levinson
+              <TwitterIcon />
+              <title>Twitter</title>
             </a>
           </li>
-          {/* <li>
-            <a href='https://github.com/AndrewLevinson'>Personal Github</a>
-          </li> */}
           <li>
-            <a href='https://andrewlevinson.me/AndrewLevinson_Resume.pdf' target='_blank' rel='noopener noreferrer'>
-              Resume
+            <a href='https://github.com/AndrewLevinson'>
+              <GithubIcon />
             </a>
           </li>
         </ul>
-        <p className={styles.note}>some shit about a copywrite trademark 2021 bs</p>
+        <p className={styles.note}>Andrew Levinson © {new Date().getFullYear()}</p>
       </div>
     </footer>
   );

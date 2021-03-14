@@ -5,6 +5,13 @@ import Link from 'next/link';
 import groq from 'groq';
 import BlockContent from '@sanity/block-content-to-react';
 import client from '../../client';
+import Code from '../../components/Code';
+
+const serializers = {
+  types: {
+    code: Code,
+  },
+};
 
 import RelatedPosts from '../../components/RelatedPosts/RelatedPosts';
 
@@ -20,11 +27,13 @@ const Post = props => {
         <meta name='description' content={description} />
         <meta property='og:title' content={title} key='ogtitle' />
         <meta property='og:description' content={description} key='ogdesc' />
+        {/* <link rel='canonical' href={`https://andrewlevinson.me/post/${slug}`} /> */}
+
         {/* tiwtter */}
         <meta name='twitter:card' content='summary' key='twcard' />
         <meta name='twitter:creator' content='@andrew_levinson' key='twhandle' />
         {/* Open Graph */}
-        <meta property='og:url' content={`https://andrewlevinson.me/post/${slug}`} key='ogurl' />
+        {/* <meta property='og:url' content={`https://andrewlevinson.me/post/${slug}`} key='ogurl' /> */}
         <meta property='og:image' content='/images/meta_image.jpg' key='ogimage' />
         <meta property='og:site_name' content={title} key='ogsitename' />
         <meta property='og:title' content={title} key='ogtitle' />
@@ -48,6 +57,7 @@ const Post = props => {
       <BlockContent
         blocks={body}
         imageOptions={{ w: 320, h: 240, fit: 'max' }}
+        serializers={serializers}
         {...client.config()}
         className={styles.content}
       />

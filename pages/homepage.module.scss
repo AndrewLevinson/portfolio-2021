@@ -148,6 +148,7 @@
   composes: blogList;
 
   article {
+    margin-bottom: 0;
     & > a {
       border: 1px solid var(--project-border-color);
       box-shadow: 0 1px 8px -5px var(--box-shadow-color);
@@ -223,7 +224,7 @@
     object-fit: cover;
     object-position: top center;
     margin-right: 2rem;
-    // border: 1px solid var(--grey-light);
+    border: 1px solid var(--grey-light);
   }
 
   @media (max-width: 650px) {
@@ -249,6 +250,7 @@
       max-height: unset;
       width: 100%;
       border-radius: var(--border-radius) var(--border-radius) 0 0;
+      border: none;
       border-bottom: 1px solid var(--grey-light);
     }
     .description {

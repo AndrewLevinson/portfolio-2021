@@ -1,0 +1,8 @@
+.codeBlock pre {
+  background-color: var(--spacer-background) !important;
+  box-shadow: 0 1px 8px -5px var(--box-shadow-color), 0 1px 8px -4px var(--box-shadow-color);
+
+  code {
+    background-color: var(--spacer-background) !important;
+  }
+}
