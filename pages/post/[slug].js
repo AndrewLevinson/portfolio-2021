@@ -50,7 +50,7 @@ const Post = props => {
       </Link>
 
       <h1>{title}</h1>
-      <h4 className={styles.description}>{description}</h4>
+      <h2 className={styles.description}>{description}</h2>
       <p className={styles.timestamp}>Published {format(new Date(publishedAt), 'MMM dd, yyyy')}</p>
       <ul className={styles.tags}>{categories && categories.map(category => <li key={category}>{category}</li>)}</ul>
 

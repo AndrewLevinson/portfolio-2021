@@ -21,6 +21,7 @@ function urlFor(source) {
 const Index = props => {
   const { posts = [], projects = [], book = {}, press = [] } = props;
   const [showAll, setShowAll] = useState(false);
+  const [showAllPosts, setShowAllPosts] = useState(false);
 
   const meta = {
     title: 'Andrew Levinson: Design, Code, Data',
@@ -53,7 +54,7 @@ const Index = props => {
         <link rel='manifest' href='/favicon/site.webmanifest' />
       </Head>
       <h1>Andrew Levinson</h1>
-      <h4 className={styles.subhed}>Designer / Developer / Data Visualizer</h4>
+      <h2 className={styles.subhed}>Designer / Developer / Data Visualizer</h2>
       <p className={styles.intro}>
         Currently, I design & code visuals at <a href='https://graphics.wsj.com/'>The Wall Street Journal</a> and
         occasionally teach <a href='https://courses.newschool.edu/courses/PUCD2126/6770/'>Core Interaction Lab</a> at
@@ -76,9 +77,9 @@ const Index = props => {
         </span>
       </p>
       <section className={styles.tree} id='recent'>
-        <span className={styles.sectionTitle}>
+        <h4 className={styles.sectionTitle}>
           <WorkIcon /> recent work/
-        </span>
+        </h4>
         <div className={styles.projectList}>
           {projects
             .slice(0, showAll ? 100 : 3)
@@ -159,11 +160,11 @@ const Index = props => {
         </button>
       </section>
       <section className={styles.tree} id='blog'>
-        <span className={styles.sectionTitle}>
+        <h4 className={styles.sectionTitle}>
           <ThoughtsIcon /> thoughts/
-        </span>
+        </h4>
         <div className={styles.blogList}>
-          {posts.map(({ _id, title, slug, publishedAt, description }) => {
+          {posts.slice(0, showAllPosts ? 100 : 3).map(({ _id, title, slug, publishedAt, description }) => {
             const comingSoon = isFuture(new Date(publishedAt));
             return (
               <article key={_id}>
@@ -184,18 +185,26 @@ const Index = props => {
             );
           })}
         </div>
+        {posts && posts.length > 3 && (
+          <button
+            className={styles.button}
+            onClick={() => (showAllPosts ? setShowAllPosts(false) : setShowAllPosts(true))}
+          >
+            {showAllPosts ? 'Collapse –' : 'Show more thoughts +'}
+          </button>
+        )}
       </section>
       <section className={styles.tree} id='current'>
-        <span className={styles.sectionTitle}>
+        <h4 className={styles.sectionTitle}>
           <VibeIcon /> my vibe/
-        </span>
+        </h4>
         <NowPlaying />
         <Book {...book} />
       </section>
       <section className={styles.tree} id='awards'>
-        <span className={styles.sectionTitle}>
+        <h4 className={styles.sectionTitle}>
           <AwardsIcon /> press/
-        </span>
+        </h4>
         <div className={styles.awardsList}>
           {press.map(({ _id, title, tag, directLink }) => {
             return (

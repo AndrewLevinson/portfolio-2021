@@ -18,7 +18,11 @@ export default function Code({ node }) {
   const { language, code } = node;
   return (
     <div className={styles.codeBlock}>
-      <SyntaxHighlighter language={language || 'text'} style={theme === 'light' ? materialLight : materialDark}>
+      <SyntaxHighlighter
+        language={language || 'text'}
+        style={theme === 'light' ? materialLight : materialDark}
+        wrapLines={true}
+      >
         {code}
       </SyntaxHighlighter>
     </div>

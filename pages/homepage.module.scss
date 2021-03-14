@@ -15,6 +15,12 @@
 .subhed {
   color: var(--grey-mid);
   margin-bottom: 1rem;
+  font-size: 1.75rem;
+  line-height: 1.4;
+  letter-spacing: -0.08rem;
+  @media (min-width: 550px) {
+    font-size: 2.4rem;
+  }
 }
 .intro {
   color: var(--text-color);
@@ -73,8 +79,10 @@
     color: var(--grey-mid);
     display: inline-block;
     margin-bottom: 1rem;
-    font-size: 1.7rem;
-
+    font-size: 1.75rem;
+    line-height: 1.4;
+    letter-spacing: -0.03rem;
+    font-weight: 400;
     svg {
       margin-right: 0.5rem;
     }
@@ -278,7 +286,7 @@
   padding: 0.5rem 1rem;
   border-radius: var(--border-radius);
   display: block;
-  margin: 2rem auto 0 auto;
+  margin: 0 auto;
 
   &:hover {
     cursor: pointer;
