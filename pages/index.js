@@ -62,11 +62,11 @@ const Index = props => {
         Previously, I’ve been a product designer at a software agency, a financial consultant, and even a touring
         musician in a metal band.
         <span className={styles.jump}>
-          <a href='#recent'>
-            <WorkIcon /> projects
-          </a>
           <a href='#blog'>
             <ThoughtsIcon /> thoughts
+          </a>
+          <a href='#recent'>
+            <WorkIcon /> projects
           </a>
           {/* <a href='#awards'>
             <AwardsIcon /> press
