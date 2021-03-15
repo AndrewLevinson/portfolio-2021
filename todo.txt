@@ -1,10 +1,7 @@
 To Dos
-
-- add code block syntax highlighting to blog blocks
 - curved (svg?) text on theme changer
-- add new projects (cookies, ease-energy, case studies??)
+- add new projects (case studies??)
 - top artists from spotify? link to spotify profile?playlist?
 - add analytics. Fathom? Plausible? something on edge
 - responsive images. Shorter on mobile. Taller on desktop.
 - add related project link to blog post (i.e., Election post should have link to project in a component. Maybe small version of homepage project component?)
-- better bio. 

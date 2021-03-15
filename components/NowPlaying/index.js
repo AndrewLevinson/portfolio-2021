@@ -46,7 +46,6 @@ function NowPlaying() {
             <span>{data.title}</span>
             <span>{data.artist}</span>
             <div className={styles.genreList}>
-              For fans of{' '}
               {data.genreList
                 .slice(0, 3)
                 .map(genre => genre)

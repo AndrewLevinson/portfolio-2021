@@ -43,7 +43,7 @@
   & > a:focus img {
     cursor: pointer;
     transform: translateX(-50%) rotate(3deg);
-    border-color: var(--text-color);
+    border-color: var(--link-color);
   }
 
   ul {

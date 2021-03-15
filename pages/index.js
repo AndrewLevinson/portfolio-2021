@@ -63,7 +63,7 @@ const Index = props => {
         musician in a metal band.
         <span className={styles.jump}>
           <a href='#recent'>
-            <WorkIcon /> recent work
+            <WorkIcon /> projects
           </a>
           <a href='#blog'>
             <ThoughtsIcon /> thoughts
@@ -76,9 +76,45 @@ const Index = props => {
           </a>
         </span>
       </p>
+      <section className={styles.tree} id='blog'>
+        <h4 className={styles.sectionTitle}>
+          <ThoughtsIcon /> thoughts/
+        </h4>
+        <div className={styles.blogList}>
+          {posts.slice(0, showAllPosts ? 100 : 3).map(({ _id, title, slug, publishedAt, category, description }) => {
+            const comingSoon = isFuture(new Date(publishedAt));
+            return (
+              <article key={_id}>
+                <Link href='/post/[slug]' as={`/post/${slug.current}`} passHref>
+                  <a className={comingSoon ? styles.future : null} tabIndex={comingSoon ? '-1' : null}>
+                    <div>
+                      <span className={styles.tag}>
+                        {comingSoon ? 'coming soon' : format(new Date(publishedAt), 'MMM. yyyy')}
+                        {category && ` • ${category}`}
+                      </span>
+                    </div>
+                    {title}
+                    <div>
+                      <span className={styles.description}>{description}</span>
+                    </div>
+                  </a>
+                </Link>
+              </article>
+            );
+          })}
+        </div>
+        {posts && posts.length > 3 && (
+          <button
+            className={styles.button}
+            onClick={() => (showAllPosts ? setShowAllPosts(false) : setShowAllPosts(true))}
+          >
+            {showAllPosts ? 'Collapse –' : 'Show more thoughts +'}
+          </button>
+        )}
+      </section>
       <section className={styles.tree} id='recent'>
         <h4 className={styles.sectionTitle}>
-          <WorkIcon /> recent work/
+          <WorkIcon /> projects/
         </h4>
         <div className={styles.projectList}>
           {projects
@@ -159,41 +195,7 @@ const Index = props => {
           {showAll ? 'Collapse –' : 'Show more work +'}
         </button>
       </section>
-      <section className={styles.tree} id='blog'>
-        <h4 className={styles.sectionTitle}>
-          <ThoughtsIcon /> thoughts/
-        </h4>
-        <div className={styles.blogList}>
-          {posts.slice(0, showAllPosts ? 100 : 3).map(({ _id, title, slug, publishedAt, description }) => {
-            const comingSoon = isFuture(new Date(publishedAt));
-            return (
-              <article key={_id}>
-                <Link href='/post/[slug]' as={`/post/${slug.current}`} passHref>
-                  <a className={comingSoon ? styles.future : null} tabIndex={comingSoon ? '-1' : null}>
-                    <div>
-                      <span className={styles.tag}>
-                        {comingSoon ? 'coming soon' : format(new Date(publishedAt), 'MMM. yyyy')}
-                      </span>
-                    </div>
-                    {title}
-                    <div>
-                      <span className={styles.description}>{description}</span>
-                    </div>
-                  </a>
-                </Link>
-              </article>
-            );
-          })}
-        </div>
-        {posts && posts.length > 3 && (
-          <button
-            className={styles.button}
-            onClick={() => (showAllPosts ? setShowAllPosts(false) : setShowAllPosts(true))}
-          >
-            {showAllPosts ? 'Collapse –' : 'Show more thoughts +'}
-          </button>
-        )}
-      </section>
+
       <section className={styles.tree} id='current'>
         <h4 className={styles.sectionTitle}>
           <VibeIcon /> my vibe/
@@ -206,12 +208,15 @@ const Index = props => {
           <AwardsIcon /> press/
         </h4>
         <div className={styles.awardsList}>
-          {press.map(({ _id, title, tag, directLink }) => {
+          {press.map(({ _id, title, tag, publishedAt, directLink }) => {
             return (
               <article key={_id}>
                 <a href={directLink}>
                   <div>
-                    <span className={styles.tag}>{tag}</span>
+                    <span className={styles.tag}>
+                      {format(new Date(publishedAt), 'MMM. yyyy')}
+                      {tag && ` • ${tag}`}
+                    </span>
                   </div>
                   {title}
                 </a>
@@ -228,7 +233,7 @@ export async function getStaticProps() {
   return {
     props: {
       posts: await client.fetch(groq`
-      *[_type == "post"]|order(publishedAt desc)
+      *[_type == "post"]{_id, title, slug, publishedAt, "category": categories[0]->title, description}|order(publishedAt desc)
     `),
       projects: await client.fetch(groq`
       *[_type == "project"]{
