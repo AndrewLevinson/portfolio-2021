@@ -68,9 +68,6 @@ const Index = props => {
           <a href='#recent'>
             <WorkIcon /> projects
           </a>
-          {/* <a href='#awards'>
-            <AwardsIcon /> press
-          </a> */}
           <a href='#current'>
             <VibeIcon /> vibe
           </a>

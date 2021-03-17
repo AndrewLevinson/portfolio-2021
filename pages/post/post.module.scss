@@ -1,7 +1,7 @@
 .article {
   width: 90vw;
   max-width: 640px;
-  margin: 22rem auto 10rem auto;
+  margin: 19rem auto 10rem auto;
   position: relative;
 
   h1 {
@@ -9,7 +9,7 @@
     margin-bottom: 1.5rem;
   }
   @media (max-width: 550px) {
-    margin: 16rem auto 10rem 5vw;
+    margin: 15rem auto 10rem 5vw;
   }
 }
 
@@ -20,9 +20,10 @@
   margin-bottom: 1rem;
   font-size: 1.75rem;
   line-height: 1.4;
-  letter-spacing: -0.08rem;
+  letter-spacing: -0.04rem;
   @media (min-width: 550px) {
     font-size: 2.4rem;
+    letter-spacing: -0.08rem;
   }
 }
 

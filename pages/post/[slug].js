@@ -6,11 +6,13 @@ import groq from 'groq';
 import BlockContent from '@sanity/block-content-to-react';
 import client from '../../client';
 import Code from '../../components/Code';
+import Prompt from '../../components/Prompt';
 
 const serializers = {
   types: {
     code: Code,
   },
+  marks: { prompt: Prompt },
 };
 
 import RelatedPosts from '../../components/RelatedPosts/RelatedPosts';
@@ -45,15 +47,16 @@ const Post = props => {
         <link rel='icon' type='image/png' sizes='16x16' href='/favicon/favicon-16x16.png' />
         <link rel='manifest' href='/favicon/site.webmanifest' />
       </Head>
-      <Link href='/' as={`/`} passHref>
-        <a className='backLink'>⟵ back home/</a>
-      </Link>
+      <header>
+        <Link href='/' as={`/`} passHref>
+          <a className='backLink'>⟵ back home/</a>
+        </Link>
 
-      <h1>{title}</h1>
-      <h2 className={styles.description}>{description}</h2>
-      <p className={styles.timestamp}>Published {format(new Date(publishedAt), 'MMM dd, yyyy')}</p>
-      <ul className={styles.tags}>{categories && categories.map(category => <li key={category}>{category}</li>)}</ul>
-
+        <h1>{title}</h1>
+        <h2 className={styles.description}>{description}</h2>
+        <p className={styles.timestamp}>Published {format(new Date(publishedAt), 'MMM dd, yyyy')}</p>
+        <ul className={styles.tags}>{categories && categories.map(category => <li key={category}>{category}</li>)}</ul>
+      </header>
       <BlockContent
         blocks={body}
         imageOptions={{ w: 320, h: 240, fit: 'max' }}

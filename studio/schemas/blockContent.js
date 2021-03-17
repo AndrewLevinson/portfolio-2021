@@ -1,3 +1,4 @@
+import React from 'react';
 /**
  * This is the schema definition for the rich text fields used for
  * for this blog studio. When you import it in schemas.js it can be
@@ -39,6 +40,21 @@ export default {
           { title: 'Underline', value: 'underline' },
           { title: 'Strike', value: 'strike-through' },
           { title: 'Code', value: 'code' },
+          {
+            title: 'Prompt',
+            value: 'prompt',
+            blockEditor: {
+              icon: () => '?',
+              render: props => (
+                <>
+                  <em>{props.children}</em>{' '}
+                  <span style={{ backgroundColor: 'yellow' }}>
+                    Tweet to me @andrew_levinson and share your thoughts.
+                  </span>
+                </>
+              ),
+            },
+          },
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
