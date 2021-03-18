@@ -26,7 +26,8 @@ const Index = props => {
   const meta = {
     title: 'Andrew Levinson: Design, Code, Data',
     description: 'The personal portfolio website for Andrew Levinson showcasing design and data visualization projects',
-    image: '/images/meta_image.jpg',
+    // image: '/images/meta_image.jpg',
+    image: 'https://raw.githubusercontent.com/AndrewLevinson/portfolio-2021/main/public/images/meta_image.jpg',
   };
 
   return (

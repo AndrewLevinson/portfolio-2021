@@ -36,10 +36,18 @@ const Post = props => {
         <meta name='twitter:creator' content='@andrew_levinson' key='twhandle' />
         <meta name='twitter:title' content={title} key='twtitle'></meta>
         <meta name='twitter:description' content={description} key='twdescription'></meta>
-        <meta name='twitter:image' content='/images/meta_image.jpg' key='twimage'></meta>
+        <meta
+          name='twitter:image'
+          content='https://raw.githubusercontent.com/AndrewLevinson/portfolio-2021/main/public/images/meta_image.jpg'
+          key='twimage'
+        ></meta>
         {/* Open Graph */}
         {/* <meta property='og:url' content={`https://andrewlevinson.me/post/${slug}`} key='ogurl' /> */}
-        <meta property='og:image' content='/images/meta_image.jpg' key='ogimage' />
+        <meta
+          property='og:image'
+          content='https://raw.githubusercontent.com/AndrewLevinson/portfolio-2021/main/public/images/meta_image.jpg'
+          key='ogimage'
+        />
         <meta property='og:site_name' content={title} key='ogsitename' />
         <meta property='og:title' content={title} key='ogtitle' />
         <meta property='og:description' content={description} key='ogdesc' />
