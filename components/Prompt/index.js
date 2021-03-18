@@ -1,13 +1,23 @@
+import { useState, useEffect } from 'react';
 import styles from './index.module.scss';
 
-export default function Prompt({ children }) {
+export default function Prompt(props) {
+  const [url, setUrl] = useState('https://twitter.com/andrew_levinson');
+  useEffect(() => {
+    setUrl(setTwitterUrl(window.location.pathname));
+  }, []);
+
   return (
     <span className={styles.prompt}>
-      <em>{children[0]}</em> Tweet to me{' '}
-      <a href='https://twitter.com/andrew_levinson' target='_blank' rel='noopener noreferrer'>
+      <em>{props.children}</em> Tweet to me{' '}
+      <a href={url} target='_blank' rel='noopener noreferrer'>
         @andrew_levinson
       </a>{' '}
       and share your thoughts.
     </span>
   );
+}
+
+function setTwitterUrl(path) {
+  return `https://twitter.com/share?text=@andrew_levinson&url=https://andrewlevinson.me${path}`;
 }

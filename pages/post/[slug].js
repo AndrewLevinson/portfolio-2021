@@ -7,6 +7,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import client from '../../client';
 import Code from '../../components/Code';
 import Prompt from '../../components/Prompt';
+import RelatedPosts from '../../components/RelatedPosts';
 
 const serializers = {
   types: {
@@ -14,8 +15,6 @@ const serializers = {
   },
   marks: { prompt: Prompt },
 };
-
-import RelatedPosts from '../../components/RelatedPosts/RelatedPosts';
 
 const Post = props => {
   const { title, categories, description, slug, publishedAt, body = [], otherPosts } = props;
@@ -32,8 +31,12 @@ const Post = props => {
         {/* <link rel='canonical' href={`https://andrewlevinson.me/post/${slug}`} /> */}
 
         {/* tiwtter */}
-        <meta name='twitter:card' content='summary' key='twcard' />
+        <meta name='twitter:card' content='summary_large_image' key='twcard' />
+        <meta name='twitter:site' content='@andrew_levinson' key='twsite' />
         <meta name='twitter:creator' content='@andrew_levinson' key='twhandle' />
+        <meta name='twitter:title' content={title} key='twtitle'></meta>
+        <meta name='twitter:description' content={description} key='twdescription'></meta>
+        <meta name='twitter:image' content='/images/meta_image.jpg' key='twimage'></meta>
         {/* Open Graph */}
         {/* <meta property='og:url' content={`https://andrewlevinson.me/post/${slug}`} key='ogurl' /> */}
         <meta property='og:image' content='/images/meta_image.jpg' key='ogimage' />

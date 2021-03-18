@@ -39,8 +39,12 @@ const Index = props => {
         <meta property='og:title' content={meta.title} key='ogtitle' />
         <meta property='og:description' content={meta.description} key='ogdesc' />
         {/* tiwtter */}
-        <meta name='twitter:card' content='summary' key='twcard' />
+        <meta name='twitter:card' content='summary_large_image' key='twcard' />
+        <meta name='twitter:site' content='@andrew_levinson' key='twsite' />
         <meta name='twitter:creator' content='@andrew_levinson' key='twhandle' />
+        <meta name='twitter:title' content={meta.title} key='twtitle'></meta>
+        <meta name='twitter:description' content={meta.description} key='twdescription'></meta>
+        <meta name='twitter:image' content={meta.image} key='twimage'></meta>
         {/* Open Graph */}
         <meta property='og:url' content='https://andrewlevinson.me/' key='ogurl' />
         <meta property='og:image' content={meta.image} key='ogimage' />
