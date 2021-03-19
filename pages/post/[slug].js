@@ -28,7 +28,7 @@ const Post = props => {
         <meta name='description' content={description} />
         <meta property='og:title' content={title} key='ogtitle' />
         <meta property='og:description' content={description} key='ogdesc' />
-        {/* <link rel='canonical' href={`https://andrewlevinson.me/post/${slug}`} /> */}
+        <link rel='canonical' href={`https://andrewlevinson.me/post/${slug}`} />
 
         {/* tiwtter */}
         <meta name='twitter:card' content='summary_large_image' key='twcard' />
@@ -42,7 +42,7 @@ const Post = props => {
           key='twimage'
         ></meta>
         {/* Open Graph */}
-        {/* <meta property='og:url' content={`https://andrewlevinson.me/post/${slug}`} key='ogurl' /> */}
+        <meta property='og:url' content={`https://andrewlevinson.me/post/${slug}`} key='ogurl' />
         <meta
           property='og:image'
           content='https://raw.githubusercontent.com/AndrewLevinson/portfolio-2021/main/public/images/meta_image.jpg'
