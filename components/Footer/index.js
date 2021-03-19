@@ -22,22 +22,37 @@ function Footer() {
             />
           </a>
         </Link>
-        {/* <p>Andrew Levinson is a graphics reporter for The Wall Street Journal</p> */}
         <ul>
           <li>
-            <a href='mailto:andrewlevins@gmail.com' target='_blank' rel='noopener'>
+            <a
+              href='mailto:andrewlevins@gmail.com'
+              title='Email'
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label={`Email link`}
+            >
               <EmailIcon />
-              <title>Email</title>
             </a>
           </li>
           <li>
-            <a href='https://twitter.com/andrew_levinson' target='_blank' rel='noopener noreferrer'>
+            <a
+              href='https://twitter.com/andrew_levinson'
+              title='Twitter'
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label={`Twitter link`}
+            >
               <TwitterIcon />
-              <title>Twitter</title>
             </a>
           </li>
           <li>
-            <a href='https://github.com/AndrewLevinson'>
+            <a
+              href='https://github.com/AndrewLevinson'
+              title='Github'
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label={`Github link`}
+            >
               <GithubIcon />
             </a>
           </li>

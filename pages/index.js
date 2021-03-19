@@ -137,7 +137,7 @@ const Index = props => {
                 return (
                   slug && (
                     <article key={_id}>
-                      <a href={directLink} target='_blank' rel='noopener noreferrer' rel='bookmark'>
+                      <a href={directLink} target='_blank' rel='noopener noreferrer bookmark'>
                         <div className={styles.band} />
                         <div className={styles.flex}>
                           <img
