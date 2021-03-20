@@ -39,6 +39,8 @@ const Index = props => {
         <meta name='description' content={meta.description} />
         <meta property='og:title' content={meta.title} key='ogtitle' />
         <meta property='og:description' content={meta.description} key='ogdesc' />
+        <link rel='canonical' href={`https://andrewlevinson.me/`} />
+
         {/* tiwtter */}
         <meta name='twitter:card' content='summary_large_image' key='twcard' />
         <meta name='twitter:site' content='@andrew_levinson' key='twsite' />
