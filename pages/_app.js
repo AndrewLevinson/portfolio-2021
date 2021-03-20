@@ -13,9 +13,8 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider attribute='class' enableSystem>
       <div className='container'>
-        {/* <div className='spacer' /> */}
-        <ThemeChanger />
         <Component {...pageProps} />
+        <ThemeChanger />
         <Footer />
       </div>
     </ThemeProvider>
