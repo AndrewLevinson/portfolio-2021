@@ -14,7 +14,7 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <script async defer data-domain='andrewlevinson.me' src='https://plausible.io/js/plausible.js'></script>
+        <script async defer data-domain='andrewlevinson.me' src='https://stats.andrewlevinson.me/js/index.js'></script>
       </Head>
       <ThemeProvider attribute='class' enableSystem>
         <div className='container'>
