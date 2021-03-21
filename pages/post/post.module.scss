@@ -20,10 +20,10 @@
   margin-bottom: 1rem;
   font-size: 1.75rem;
   line-height: 1.4;
-  letter-spacing: -0.04rem;
+  letter-spacing: -0.03rem;
   @media (min-width: 550px) {
     font-size: 2.4rem;
-    letter-spacing: -0.08rem;
+    letter-spacing: -0.07rem;
   }
 }
 
@@ -64,16 +64,16 @@
 
 .content {
   p {
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
     font-family: Charter, Bitstream Charter, serif;
-    font-size: 1.8rem;
+    font-size: 1.825rem;
+    line-height: 1.6;
 
     &:first-child:first-letter {
       float: left;
-      font-size: 7rem;
+      font-size: 5.85rem;
       line-height: 1;
-      padding-right: 1.6rem;
-      padding-left: 0.3rem;
+      padding-right: 0.75rem;
     }
   }
   h3 {
