@@ -4,8 +4,15 @@ import ThemeChanger from '../ThemeChanger';
 import GithubIcon from '../Icons/GithubIcon';
 import TwitterIcon from '../Icons/TwitterIcon';
 import EmailIcon from '../Icons/EmailIcon';
+import { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
 
 function Footer() {
+  const [isMounted, setIsMounted] = useState(false);
+  const { theme } = useTheme();
+  useEffect(() => setIsMounted(true), []);
+
+  if (!isMounted) return null;
   return (
     <footer className={styles.footer}>
       <div className={styles.themeHolder}>
@@ -15,7 +22,7 @@ function Footer() {
         <Link href='/' as={`/`} passHref>
           <a href='/'>
             <img
-              src='/images/default_avatar.jpg'
+              src={`/images/default_avatar_dith_${theme}.png`}
               width='85'
               className={styles.avatar}
               alt='avatar image of me, Andrew'
