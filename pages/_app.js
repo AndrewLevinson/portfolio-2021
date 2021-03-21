@@ -1,4 +1,5 @@
 import { ThemeProvider } from 'next-themes';
+import Head from 'next/head';
 
 import '../styles/normalize.css';
 import '../styles/defaults.css';
@@ -11,12 +12,17 @@ import ThemeChanger from '../components/ThemeChanger';
 
 export default function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider attribute='class' enableSystem>
-      <div className='container'>
-        <Component {...pageProps} />
-        <ThemeChanger />
-        <Footer />
-      </div>
-    </ThemeProvider>
+    <>
+      <Head>
+        <script async defer data-domain='andrewlevinson.me' src='https://plausible.io/js/plausible.js'></script>
+      </Head>
+      <ThemeProvider attribute='class' enableSystem>
+        <div className='container'>
+          <Component {...pageProps} />
+          <ThemeChanger />
+          <Footer />
+        </div>
+      </ThemeProvider>
+    </>
   );
 }
