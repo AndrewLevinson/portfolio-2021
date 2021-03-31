@@ -75,6 +75,14 @@ button * {
   pointer-events: none;
 }
 
+details summary {
+  cursor: pointer;
+}
+
+details summary > * {
+  display: inline;
+}
+
 /* Easy responsive for media elements */
 embed,
 iframe,

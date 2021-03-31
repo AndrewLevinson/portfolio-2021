@@ -12,6 +12,17 @@ import RelatedPosts from '../../components/RelatedPosts';
 const serializers = {
   types: {
     code: Code,
+    details: ({ node }) => {
+      const { summary, content } = node;
+      return (
+        <details>
+          <summary>
+            <h4>{summary}</h4>
+          </summary>
+          <BlockContent blocks={content} className={styles.detailContent} />
+        </details>
+      );
+    },
   },
   marks: { prompt: Prompt },
 };

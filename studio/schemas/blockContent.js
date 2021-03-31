@@ -83,5 +83,6 @@ export default {
     {
       type: 'code',
     },
+    { type: 'details' },
   ],
 };
