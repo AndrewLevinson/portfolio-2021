@@ -9,7 +9,8 @@ export default function Prompt(props) {
 
   return (
     <span className={styles.prompt}>
-      <em>{props.children}</em> Tweet to me{' '}
+      <strong>{props.children}</strong>
+      Tweet to me{' '}
       <a href={url} target='_blank' rel='noopener noreferrer'>
         @andrew_levinson
       </a>{' '}

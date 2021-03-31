@@ -140,7 +140,6 @@ const Index = props => {
                   slug && (
                     <article key={_id}>
                       <a href={directLink} target='_blank' rel='noopener noreferrer bookmark'>
-                        <div className={styles.band} />
                         <div className={styles.flex}>
                           <img
                             src={urlFor(mainImage).width(625).auto('format').url()}
