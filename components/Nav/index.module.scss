@@ -1,0 +1,30 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4rem;
+  padding: 0 5rem;
+  @media (max-width: 550px) {
+    padding: 0 5vw;
+  }
+}
+
+.links {
+  display: flex;
+  align-items: center;
+
+  & > span > * {
+    margin-left: 2rem;
+
+    @media (max-width: 550px) {
+      margin-left: 1rem;
+      & > svg {
+        display: none;
+      }
+    }
+
+    @media (max-width: 350px) {
+      font-size: 1.4rem;
+    }
+  }
+}

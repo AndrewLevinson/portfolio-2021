@@ -68,7 +68,7 @@ const Index = props => {
         Parsons School of Design. <br />
         Previously, I’ve been a product designer at a software agency, a financial consultant, and even a touring
         musician in a metal band.
-        <span className={styles.jump}>
+        {/* <span className={styles.jump}>
           <a href='#blog'>
             <ThoughtsIcon /> thoughts
           </a>
@@ -78,7 +78,7 @@ const Index = props => {
           <a href='#current'>
             <VibeIcon /> vibe
           </a>
-        </span>
+        </span> */}
       </p>
       <section className={styles.tree} id='blog'>
         <h4 className={styles.sectionTitle}>
@@ -206,6 +206,7 @@ const Index = props => {
         <NowPlaying />
         <Book {...book} />
       </section>
+
       <section className={styles.tree} id='awards'>
         <h4 className={styles.sectionTitle}>
           <AwardsIcon /> press/

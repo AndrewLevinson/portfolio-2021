@@ -1,21 +1,20 @@
 .holder {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 5rem 0 0 4rem;
-  @media (max-width: 550px) {
-    margin: 4rem 0 0 5vw;
-  }
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // margin: 5rem 0 0 4rem;
+  // @media (max-width: 550px) {
+  //   margin: 4rem 0 0 5vw;
+  // }
 }
 
 .button {
   width: fit-content;
-  font-size: 3.5rem;
+  font-size: 3rem;
   padding: 0;
   border: 1px solid transparent;
   background-color: transparent;
   line-height: 1;
-  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1);
   transition: 0.2s ease-in-out all;
 
   &:hover,
@@ -23,9 +22,12 @@
     cursor: pointer;
     outline: none;
   }
-  &:hover,
+  &:hover {
+    // box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px) scale(1.1);
+  }
+
   &:focus-visible {
-    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
     border-color: var(--link-color);
     transform: translateY(-1px) scale(1.1);
   }

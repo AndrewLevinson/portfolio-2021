@@ -1,0 +1,12 @@
+.logo {
+  width: 80px;
+  display: block;
+
+  text {
+    fill: var(--header-text-color);
+  }
+
+  path {
+    fill: var(--link-color);
+  }
+}

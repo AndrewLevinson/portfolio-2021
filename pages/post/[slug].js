@@ -19,7 +19,7 @@ const serializers = {
           <summary>
             <h4>{summary}</h4>
           </summary>
-          <BlockContent blocks={content} className={styles.detailContent} />
+          <BlockContent blocks={content} className={styles.detailsContent} />
         </details>
       );
     },

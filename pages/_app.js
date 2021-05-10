@@ -8,7 +8,7 @@ import '../styles/typography.css';
 import '../styles/global.css';
 
 import Footer from '../components/Footer';
-import ThemeChanger from '../components/ThemeChanger';
+import Nav from '../components/Nav';
 
 export default function MyApp({ Component, pageProps }) {
   return (
@@ -18,8 +18,8 @@ export default function MyApp({ Component, pageProps }) {
       </Head>
       <ThemeProvider attribute='class' enableSystem>
         <div className='container'>
+          <Nav />
           <Component {...pageProps} />
-          <ThemeChanger />
           <Footer />
         </div>
       </ThemeProvider>
