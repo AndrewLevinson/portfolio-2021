@@ -8,7 +8,7 @@
     margin-bottom: 0;
   }
   @media (max-width: 550px) {
-    margin: 15rem auto 5rem 5vw;
+    margin: 10rem auto 5rem 5vw;
   }
 }
 
@@ -147,7 +147,7 @@
       }
 
       &:hover {
-        transform: scale(2);
+        transform: scale(1.5);
       }
     }
   }

@@ -13,7 +13,7 @@ export default function Nav() {
         <Logo />
       </Link>
       <div className={styles.links}>
-        <ThemeChanger />
+        <ThemeChanger small />
         {/* <a href='/'>Work</a>
         <a href='/'>Thoughts</a>
         <a href='/'>Vibe</a> */}
