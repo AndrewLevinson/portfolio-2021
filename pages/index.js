@@ -5,6 +5,7 @@ import groq from 'groq';
 import client from '../client';
 import imageUrlBuilder from '@sanity/image-url';
 import { format, isFuture } from 'date-fns';
+import { useTheme } from 'next-themes';
 
 import NowPlaying from '../components/NowPlaying';
 import Book from '../components/Book';
@@ -22,6 +23,7 @@ const Index = props => {
   const { posts = [], projects = [], book = {}, press = [] } = props;
   const [showAll, setShowAll] = useState(false);
   const [showAllPosts, setShowAllPosts] = useState(false);
+  const { theme } = useTheme();
 
   const meta = {
     title: 'Andrew Levinson: Design, Code, Data',
@@ -60,15 +62,26 @@ const Index = props => {
         <link rel='icon' type='image/png' sizes='16x16' href='/favicon/favicon-16x16.png' />
         <link rel='manifest' href='/favicon/site.webmanifest' />
       </Head>
-      <h1>Andrew Levinson</h1>
-      <h2 className={styles.subhed}>Designer / Developer / Data Visualizer</h2>
-      <p className={styles.intro}>
-        Currently, I design & code visuals at <a href='https://graphics.wsj.com/'>The Wall Street Journal</a> and
-        occasionally teach <a href='https://courses.newschool.edu/courses/PUCD2126/6770/'>Core Interaction Lab</a> at
-        Parsons School of Design. <br />
-        Previously, I’ve been a product designer at a software agency, a financial consultant, and even a touring
-        musician in a metal band.
-        {/* <span className={styles.jump}>
+      <header className={styles.header}>
+        {theme ? (
+          <img
+            src={`/images/default_avatar_dith_${theme}.png`}
+            alt='avatar image of me, Andrew'
+            width='65'
+            className={styles.avatar}
+          />
+        ) : (
+          <div style={{ width: 65, height: 65 }} />
+        )}
+        <h1>Andrew Levinson</h1>
+        <h2 className={styles.subhed}>Designer, Developer, Data Visualizer</h2>
+        <p className={styles.intro}>
+          Currently, I design & code visuals at <a href='https://graphics.wsj.com/'>The Wall Street Journal</a> and
+          occasionally teach <a href='https://courses.newschool.edu/courses/PUCD2126/6770/'>Core Interaction Lab</a> at
+          Parsons School of Design. <br />
+          Previously, I’ve been a product designer at a software agency, a financial consultant, and even a touring
+          musician in a metal band.
+          {/* <span className={styles.jump}>
           <a href='#blog'>
             <ThoughtsIcon /> thoughts
           </a>
@@ -79,43 +92,9 @@ const Index = props => {
             <VibeIcon /> vibe
           </a>
         </span> */}
-      </p>
-      <section className={styles.tree} id='blog'>
-        <h4 className={styles.sectionTitle}>
-          <ThoughtsIcon /> thoughts/
-        </h4>
-        <div className={styles.blogList}>
-          {posts.slice(0, showAllPosts ? 100 : 3).map(({ _id, title, slug, publishedAt, category, description }) => {
-            const comingSoon = isFuture(new Date(publishedAt));
-            return (
-              <article key={_id}>
-                <Link href='/post/[slug]' as={`/post/${slug.current}`} passHref>
-                  <a className={comingSoon ? styles.future : null} tabIndex={comingSoon ? '-1' : null}>
-                    <div>
-                      <span className={styles.tag}>
-                        {comingSoon ? 'coming soon' : format(new Date(publishedAt), 'MMM. yyyy')}
-                        {category && ` • ${category}`}
-                      </span>
-                    </div>
-                    {title}
-                    <div>
-                      <span className={styles.description}>{description}</span>
-                    </div>
-                  </a>
-                </Link>
-              </article>
-            );
-          })}
-        </div>
-        {posts && posts.length > 3 && (
-          <button
-            className={styles.button}
-            onClick={() => (showAllPosts ? setShowAllPosts(false) : setShowAllPosts(true))}
-          >
-            {showAllPosts ? 'Collapse –' : 'Show more thoughts +'}
-          </button>
-        )}
-      </section>
+        </p>
+      </header>
+
       <section className={styles.tree} id='recent'>
         <h4 className={styles.sectionTitle}>
           <WorkIcon /> projects/
@@ -199,6 +178,42 @@ const Index = props => {
         </button>
       </section>
 
+      <section className={styles.tree} id='blog'>
+        <h4 className={styles.sectionTitle}>
+          <ThoughtsIcon /> thoughts/
+        </h4>
+        <div className={styles.blogList}>
+          {posts.slice(0, showAllPosts ? 100 : 3).map(({ _id, title, slug, publishedAt, category, description }) => {
+            const comingSoon = isFuture(new Date(publishedAt));
+            return (
+              <article key={_id}>
+                <Link href='/post/[slug]' as={`/post/${slug.current}`} passHref>
+                  <a className={comingSoon ? styles.future : null} tabIndex={comingSoon ? '-1' : null}>
+                    <div>
+                      <span className={styles.tag}>
+                        {comingSoon ? 'coming soon' : format(new Date(publishedAt), 'MMM. yyyy')}
+                        {category && ` • ${category}`}
+                      </span>
+                    </div>
+                    {title}
+                    <div>
+                      <span className={styles.description}>{description}</span>
+                    </div>
+                  </a>
+                </Link>
+              </article>
+            );
+          })}
+        </div>
+        {posts && posts.length > 3 && (
+          <button
+            className={styles.button}
+            onClick={() => (showAllPosts ? setShowAllPosts(false) : setShowAllPosts(true))}
+          >
+            {showAllPosts ? 'Collapse –' : 'Show more thoughts +'}
+          </button>
+        )}
+      </section>
       <section className={styles.tree} id='current'>
         <h4 className={styles.sectionTitle}>
           <VibeIcon /> my vibe/

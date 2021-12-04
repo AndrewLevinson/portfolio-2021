@@ -2,65 +2,85 @@
 .main {
   width: 90vw;
   max-width: 640px;
-  margin: 19rem auto 10rem auto;
+  margin: 10rem auto 10rem auto;
   flex-grow: 1;
   h1 {
     margin-bottom: 0;
   }
   @media (max-width: 550px) {
-    margin: 10rem auto 5rem 5vw;
+    margin: 5rem auto 5rem 5vw;
   }
 }
 
-.subhed {
-  color: var(--grey-mid);
-  margin-bottom: 1rem;
-  font-size: 1.75rem;
-  line-height: 1.4;
-  letter-spacing: -0.04rem;
-  @media (min-width: 550px) {
-    font-size: 2.4rem;
-    letter-spacing: -0.08rem;
+.header {
+  text-align: center;
+  .avatar {
+    object-fit: cover;
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    margin: 0 auto;
+    object-position: right;
+    border: 2px solid transparent;
+    transition: 0.3s ease-in-out border-color;
+    transition: 0.3s ease-in-out transform;
+
+    @media (max-width: 550px) {
+      width: 55px;
+      height: 55px;
+    }
+  }
+  .subhed {
+    color: var(--grey-mid);
+    margin-bottom: 5rem;
+    font-size: 1.75rem;
+    line-height: 1.4;
+    letter-spacing: -0.04rem;
+    @media (min-width: 550px) {
+      font-size: 2.4rem;
+      letter-spacing: -0.08rem;
+    }
+  }
+  .intro {
+    color: var(--text-color);
+    margin-bottom: 6rem;
+    text-align: left;
   }
 }
-.intro {
-  color: var(--text-color);
-  margin-bottom: 6rem;
 
-  .jump {
-    display: block;
-    margin-top: 1rem;
+.jump {
+  display: block;
+  margin-top: 1rem;
 
-    a {
-      padding-right: 1.75rem;
-      padding-bottom: 0.5rem;
-      white-space: nowrap;
-      display: inline-block;
-      will-change: contents;
+  a {
+    padding-right: 1.75rem;
+    padding-bottom: 0.5rem;
+    white-space: nowrap;
+    display: inline-block;
+    will-change: contents;
 
-      &:last-of-type {
-        padding-right: 0;
-      }
-
-      @for $i from 1 through 4 {
-        &:nth-child(#{$i}) {
-          opacity: 0;
-          transform: translateY(50%);
-          animation: fade 0.8s ease-in-out forwards;
-          animation-delay: 350ms * $i;
-        }
-      }
+    &:last-of-type {
+      padding-right: 0;
     }
 
-    @keyframes fade {
-      from {
+    @for $i from 1 through 4 {
+      &:nth-child(#{$i}) {
         opacity: 0;
-        transform: translateY(050%);
+        transform: translateY(50%);
+        animation: fade 0.8s ease-in-out forwards;
+        animation-delay: 350ms * $i;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    }
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+      transform: translateY(050%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }

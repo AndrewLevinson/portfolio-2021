@@ -15,7 +15,6 @@ function Book({ title, bookAuthor, genre, coverImage }) {
           src={urlFor(coverImage).width(150).url()}
           alt={`book cover image for ${title} by ${bookAuthor}`}
           width='70'
-          height='70'
         />
         <div className={styles.info}>
           <span>{title}</span>

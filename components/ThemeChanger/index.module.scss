@@ -1,11 +1,19 @@
 .button {
   width: fit-content;
-  font-size: 3rem;
+  font-size: 2.75rem;
   padding: 0;
   border: 1px solid transparent;
   background-color: transparent;
   line-height: 1;
   transition: 0.2s ease-in-out all;
+  color: var(--link-color);
+  svg {
+    height: 1em;
+    width: 1em;
+    padding: 0.25rem 0.5rem;
+    vertical-align: text-top;
+    background-color: var(--grey-light);
+  }
 
   &:hover,
   &:focus {
@@ -13,7 +21,6 @@
     outline: none;
   }
   &:hover {
-    // box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
     transform: translateY(-1px) scale(1.1);
   }
 
@@ -24,38 +31,38 @@
 }
 
 .button.small {
-  font-size: 2.7rem;
+  font-size: 2.5rem;
 }
 
-.label {
-  font-size: 1.5rem;
-  font-variant-caps: small-caps;
-  display: inline-block;
-  line-height: 1;
-  vertical-align: middle;
-  padding-left: 1rem;
-  margin-bottom: 1rem;
-  opacity: 0;
-}
+// .label {
+//   font-size: 1.5rem;
+//   font-variant-caps: small-caps;
+//   display: inline-block;
+//   line-height: 1;
+//   vertical-align: middle;
+//   padding-left: 1rem;
+//   margin-bottom: 1rem;
+//   opacity: 0;
+// }
 
-.mounted {
-  animation: detector 1s ease-in-out forwards;
-  animation-delay: 1s;
-}
+// .mounted {
+//   animation: detector 1s ease-in-out forwards;
+//   animation-delay: 1s;
+// }
 
-@keyframes detector {
-  0% {
-    opacity: 0;
-  }
-  30%,
-  70% {
-    opacity: 0.75;
-  }
-  60%,
-  80% {
-    opacity: 0.3;
-  }
-  100% {
-    opacity: 0.75;
-  }
-}
+// @keyframes detector {
+//   0% {
+//     opacity: 0;
+//   }
+//   30%,
+//   70% {
+//     opacity: 0.75;
+//   }
+//   60%,
+//   80% {
+//     opacity: 0.3;
+//   }
+//   100% {
+//     opacity: 0.75;
+//   }
+// }

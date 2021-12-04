@@ -22,6 +22,10 @@
   --project-band-color: hsla(173, 58%, 32%, 1);
 
   --spotify-icon-color: #1ed760;
+
+  --logo-color-block-1: #228176;
+  --logo-color-block-2: #803b3b;
+  --logo-color-block-3: #3b4480;
 }
 
 .dark {
@@ -44,4 +48,8 @@
   --project-band-color: hsl(43, 74%, 66%);
 
   --spotify-icon-color: #fffffe;
+
+  --logo-color-block-1: #e9c46a;
+  --logo-color-block-2: #65b87e;
+  --logo-color-block-3: #716dd1;
 }

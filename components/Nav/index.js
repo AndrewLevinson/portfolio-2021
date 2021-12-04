@@ -2,9 +2,6 @@ import Link from 'next/link';
 import Logo from './Logo';
 import styles from './index.module.scss';
 import ThemeChanger from '../ThemeChanger';
-import ThoughtsIcon from '../Icons/ThoughtsIcon';
-import WorkIcon from '../Icons/WorkIcon';
-import VibeIcon from '../Icons/VibeIcon';
 
 export default function Nav() {
   return (
@@ -13,21 +10,10 @@ export default function Nav() {
         <Logo />
       </Link>
       <div className={styles.links}>
-        <ThemeChanger small />
-        {/* <a href='/'>Work</a>
-        <a href='/'>Thoughts</a>
-        <a href='/'>Vibe</a> */}
-
+        <ThemeChanger />
         <span className={styles.jump}>
-          <a href='#blog'>
-            <ThoughtsIcon /> thoughts
-          </a>
-          <a href='#recent'>
-            <WorkIcon /> projects
-          </a>
-          <a href='#current'>
-            <VibeIcon /> vibe
-          </a>
+          <a href='#recent'>projects</a>
+          <a href='#blog'>thoughts</a>
         </span>
       </div>
     </nav>
