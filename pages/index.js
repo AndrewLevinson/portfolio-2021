@@ -212,7 +212,7 @@ const Index = props => {
                               <LaunchIcon customStyle={{ display: 'block' }} />
                             </div>
                             <br />
-                            <span className={styles.description}>{description}</span>
+                            {description && <span className={styles.description}>{description}</span>}
                           </span>
                         </div>
                       </a>
