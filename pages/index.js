@@ -101,7 +101,7 @@ const Index = props => {
         </h4>
         <div className={styles.projectList}>
           {projects
-            .slice(0, showAll ? 100 : 3)
+            .filter(x => x.slug.current === 'live-2020-election-results')
             .map(
               ({
                 _id,
@@ -117,7 +117,7 @@ const Index = props => {
               }) => {
                 return (
                   slug && (
-                    <article key={_id}>
+                    <article key={_id} className={styles.featuredArticle}>
                       <a href={directLink} target='_blank' rel='noopener noreferrer bookmark'>
                         <div className={styles.flex}>
                           <img
@@ -172,12 +172,61 @@ const Index = props => {
                 );
               }
             )}
+          {projects
+            .filter(x => x.slug.current !== 'live-2020-election-results')
+            .slice(0, showAll ? 100 : 3)
+            .map(
+              ({
+                _id,
+                title,
+                slug,
+                publishedAt,
+                category,
+                description,
+                relatedPost,
+                directLink,
+                imageSet,
+                mainImage,
+              }) => {
+                return (
+                  slug && (
+                    <article key={_id} className={styles.simpleProject}>
+                      <a href={directLink} target='_blank' rel='noopener noreferrer bookmark'>
+                        <div className={styles.flex}>
+                          <img
+                            src={urlFor(mainImage).width(625).auto('format').url()}
+                            width='180'
+                            alt={`screenshot of project titled: ${title}`}
+                            className={styles.mainImage}
+                          />
+                          <span>
+                            <div>
+                              <span className={styles.tag}>
+                                {format(new Date(publishedAt), 'MMM. yyyy')}
+                                {category && ` • ${category}`}
+                                <br />
+                              </span>
+                            </div>
+                            {title}
+                            <div className={styles.launch}>
+                              <LaunchIcon customStyle={{ display: 'block' }} />
+                            </div>
+                            <br />
+                            <span className={styles.description}>{description}</span>
+                          </span>
+                        </div>
+                      </a>
+                    </article>
+                  )
+                );
+              }
+            )}
         </div>
         <button className={styles.button} onClick={() => (showAll ? setShowAll(false) : setShowAll(true))}>
           {showAll ? 'Collapse –' : 'Show more work +'}
         </button>
       </section>
-
+      {/* 
       <section className={styles.tree} id='blog'>
         <h4 className={styles.sectionTitle}>
           <ThoughtsIcon /> thoughts/
@@ -213,7 +262,7 @@ const Index = props => {
             {showAllPosts ? 'Collapse –' : 'Show more thoughts +'}
           </button>
         )}
-      </section>
+      </section> */}
       <section className={styles.tree} id='current'>
         <h4 className={styles.sectionTitle}>
           <VibeIcon /> my vibe/

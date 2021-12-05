@@ -12,8 +12,9 @@ export default function Nav() {
       <div className={styles.links}>
         <ThemeChanger />
         <span className={styles.jump}>
-          <a href='#recent'>projects</a>
-          <a href='#blog'>thoughts</a>
+          <a href='#recent'>Projects</a>
+          <a href='/AndrewLevinson_Resume.pdf'>Resume</a>
+          {/* <a href='#blog'>thoughts</a> */}
         </span>
       </div>
     </nav>
